@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Community Profiles</title>
+<meta charset="utf-8">
+<meta content="IE=edge"
+  http-equiv="X-UA-Compatible">
+<meta content="Our regional community profiles."
+  name="description">
+<meta content="Alan Pruitt, @westernazedd"
+  name="author">
+<meta content="Western Arizona Economic Development District, Inc."
+  name="copyright">
+<meta content="index,follow"
+  name="robots">
+<meta content="https://www.waedd.org/profiles.html"
+  name="url">
+<meta content="G-VB90GJLZ0J"
+  name="google-analytics">
+<meta content="Global"
+  name="distribution">
+<link href="img/favicon/waedd-favicon.png"
+  rel="icon"
+  type="img/favicon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" sizes="60x60" href="img/touch-icons/apple-touch-icon-ipad-76x76.png">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-orange.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/waedd.css">
+<style> 
+body {font-family: "Roboto", sans-serif}
+.w3-bar-block .w3-bar-item {
+  padding: 16px;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+        <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="/img/webp/waedd-logo.webp" alt="western arizona economic develoment district logo" style="width:80%;"></a>
+        <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+        <a class="w3-bar-item w3-button w3-orange" href="index.html">Home</a>
+        <a class="w3-bar-item w3-button" href="about.html">About</a>
+        <a class="w3-bar-item w3-button" href="board.html">Board</a>
+        <a class="w3-bar-item w3-button" href="ceds.html">CEDS</a>
+        <a class="w3-bar-item w3-button" href="contact.html">Contact</a>
+        <a class="w3-bar-item w3-button" href="distress.html">Distress</a>
+        <a class="w3-bar-item w3-button" href="files.html">Files</a>
+        <a class="w3-bar-item w3-button" href="meetings.html">Meetings</a>
+        <a class="w3-bar-item w3-button" href="partners.html">Partners</a>
+        <a class="w3-bar-item w3-button" href="projects.html">Projects</a>
+        <a class="w3-bar-item w3-button" href="sitemap.html">Sitemap</a>
+        <a class="w3-bar-item w3-button" href="twitter.html">Twitter</a>
+      </nav>
+      <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+      <div class="w3-main" style="margin-left:250px;">
+      <div id="myTop" class="w3-container w3-top w3-theme w3-large">
+        <p><i class="fa fa-bars w3-button w3-orange w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+        <span id="myIntro" class="w3-hide">CEDS | Community Profiles</span></p>
+      </div>
+      <header class="w3-container w3-theme" style="padding:64px 32px">
+        <h1 class="w3-xxlarge">Western Arizona Economic Development District</h1>
+      </header>
+      <div class="w3-container" style="padding:32px">
+    <h2>Community Profiles</h2>
+        <ul>
+          <li>
+            <a href="md_bullhead-city-az.html">Bullhead City</a>
+          </li>
+          <li><a href="kingman-az.html">City of Kingman</a>
+          </li>
+          <li><a href="san-luis-az.html">City of San Luis</a>
+          </li>
+          <li><a href="somerton-az.html">City of Somerton</a></li>
+          <li><a href="yuma-az.html">City of Yuma</a></li>
+          <li><a href="la-paz-county-az.html">La Paz County</a></li>
+          <li><a href="lake-havasu-city-az.html">Lake Havasu City</a></li>
+          <li><a href="colorado-city-az.html">Town of Colorado City</a></li>
+          <li><a href="parker-az.html">Town of Parker</a></li>
+          <li><a href="quartzsite-az.html">Town of Quartzsite</a></li>
+          <li><a href="wellton-az.html">Town of Wellton</a></li>
+          <li><a href="yuma-county-az.html">Yuma County</a></li>
+        </ul>
+    <hr>
+</div>
+<footer class="w3-container w3-theme" style="padding:32px">
+    <q>We build connections with the people and communities in La Paz, Mohave, and Yuma counties.</q>
+  </footer>
+  <script>
+    // Open and close the sidebar on medium and small screens
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+    
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+    
+    // Change style of top container on scroll
+    window.onscroll = function() {myFunction()};
+    function myFunction() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+        document.getElementById("myIntro").classList.add("w3-show-inline-block");
+      } else {
+        document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+        document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+      }
+    }
+    
+    // Accordions
+    function myAccordion(id) {
+      var x = document.getElementById(id);
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-theme";
+      } else { 
+        x.className = x.className.replace("w3-show", "");
+        x.previousElementSibling.className = 
+        x.previousElementSibling.className.replace(" w3-theme", "");
+      }
+    }
+    </script>
+</div>
+</body>
+</html>
