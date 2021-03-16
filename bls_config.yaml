@@ -1,0 +1,24 @@
+---
+#section 3.3: All employees
+- seriesIDs:
+    - ENU0401210010
+    - ENU0401510010
+    - ENU0402710010
+  start_year: 2015
+  end_year: 2020
+  jsonfile: 'ceds3_3_all_employees.json'
+  graph_name: 'All Employees'
+  graph_file: 'all_employees_3_3.html'
+
+#section 3.3: Average Weekly Wages
+- seriesIDs:
+    - ENUUS00040010  #entire US
+    - ENU0400040010  #Arizona
+    - ENU0401240010  #La Paz
+    - ENU0402740010  #Yuma
+    - ENU0401540010  #Mohave
+  start_year: 2015
+  end_year: 2020
+  jsonfile: 'ceds3_3_avg_weekly_wages.json'
+  graph_name: 'Average Weekly Wages'
+  graph_file: "avg_weekly_wages_3_3.html"
