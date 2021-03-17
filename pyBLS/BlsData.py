@@ -115,7 +115,6 @@ class BlsData():
         if df.loc[0]['period'][0] == 'A':
             df = df.rename(columns={'year':'date'}, errors='raise')
 
-        print(df)
         #change index and sort
         df = df.set_index('date')
         df = df.sort_index()
@@ -125,7 +124,7 @@ class BlsData():
 
         return df
 
-    def create_graph(self, title, graph_type='line', clean_names=True, custom_column_names=None,
+    def create_graph(self, title, graph_type, clean_names=True, custom_column_names=None,
             transpose=False,):
         """
         Returns a graph-able plotly object from the given data and constructed
@@ -169,7 +168,10 @@ class BlsData():
         series_id_locations = {}
         for series in self.series_id_list:
             if re.match('[EN|LA]', series[0:2]):
-                area_code = re.search('^[A-Z]*(\d\d\d\d\d)', series).group(1)
+                if series[0:2] == 'EN':
+                    area_code = re.search('^[A-Z]{3}([\d|U][\d|S]\d\d\d)', series).group(1)
+                if series[0:2] == 'LA':
+                    area_code = re.search('^[A-Z]{5}(\d\d\d\d\d)', series).group(1)
                 series_id_locations[series] = qcew_area_codes_df.loc[area_code]['area_title']
             if re.match('OE', series[0:2]):
                 area_code = re.search('^[A-Z]*(\d\d\d\d\d\d\d)', series).group(1)

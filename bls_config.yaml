@@ -1,14 +1,15 @@
 ---
-#section 3.3: All employees
-- seriesIDs:
-    - ENU0401210010
-    - ENU0401510010
-    - ENU0402710010
-  start_year: 2015
-  end_year: 2020
-  jsonfile: 'ceds3_3_all_employees.json'
-  graph_name: 'All Employees'
-  graph_file: 'all_employees_3_3.html'
+#section 3.3: All employees (Test Data)
+# - seriesIDs:
+#     - ENU0401210010
+#     - ENU0401510010
+#     - ENU0402710010
+#   start_year: 2015
+#   end_year: 2020
+#   jsonfile: 'ceds3_3_all_employees.json'
+#   graph_name: 'All Employees'
+#   graph_file: 'all_employees_3_3.html'
+#   graph_type: 'line'
 
 #Section 3.3: Mean Wage Graph
 - seriesIDs:
@@ -36,6 +37,7 @@
   jsonfile: 'ceds3_3_avg_weekly_wages.json'
   graph_name: 'Average Weekly Wages'
   graph_file: "avg_weekly_wages_3_3.html"
+  graph_type: 'line'
 
 #Section 3.4: Unemployment Rates
 - seriesIDs:
@@ -48,6 +50,7 @@
   jsonfile: 'unemployment_rate.json'
   graph_name: 'Unemployment Rates'
   graph_file: "unemployment_rates_3_4.html"
+  graph_type: 'line'
 
 #section 3.4: La Paz County Unemployment
 - seriesIDs:

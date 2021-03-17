@@ -20,9 +20,9 @@ for waedd_section in bls_list:
     )
 
     fig = section_data.create_graph(waedd_section['graph_name'], 
+                                    graph_type=waedd_section['graph_type'],
                                     custom_column_names=waedd_section.get('custom_column_names'),
-                                    graph_type=waedd_section.get('graph_type'),
                                     transpose=waedd_section.get('transpose'),
     )
-    fig.show()
-    # fig.write_html("avg_weekly_wages.html")
+    # fig.show()
+    fig.write_html(f"./graphs/{waedd_section['graph_file']}")
