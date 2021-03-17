@@ -17,10 +17,12 @@ for waedd_section in bls_list:
         waedd_section['seriesIDs'],
         waedd_section['start_year'],
         waedd_section['end_year'],
-        #file='raw_data3_3.json'
     )
-    print(section_data.df)
 
-    fig = section_data.create_graph(waedd_section['graph_name'])
+    fig = section_data.create_graph(waedd_section['graph_name'], 
+                                    custom_column_names=waedd_section.get('custom_column_names'),
+                                    graph_type=waedd_section.get('graph_type'),
+                                    transpose=waedd_section.get('transpose'),
+    )
     fig.show()
     # fig.write_html("avg_weekly_wages.html")

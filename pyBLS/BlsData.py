@@ -8,8 +8,10 @@ import calendar
 import json
 import os
 import pandas as pd
+import pkg_resources
+import re
 import requests
-from bs4 import BeautifulSoup
+from pyBLS import qcew_area_codes_df, oes_area_codes_df
 
 BLS_URL = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 
@@ -21,13 +23,8 @@ class BlsData():
     A class designed to interact with the Bureau of Labor Statistics public API and translate the data
     into a Pandas Dataframe.
     """
-    def __init__(self,
-        series_id_list=None,
-        start_year=None,
-        end_year=None,
-        json_file=None,
-        raw_data=None
-    ):
+    def __init__(self, series_id_list=None, start_year=None, end_year=None, json_file=None,
+            raw_data=None):
         
         self.series_id_list = series_id_list
         self.start_year = start_year
@@ -99,7 +96,7 @@ class BlsData():
     def organize_df(self, df):
         """
         Organizes pandas dataframe depending on the term of the data.
-        Currently works for monthly and quarterly data. 
+        Currently works for monthly and quarterly data.
         Returns a pandas dataframe.
         """
         #quarterly data
@@ -114,25 +111,54 @@ class BlsData():
             df['date'] = df['period'].map(str)+ '-' +df['year'].map(str)
             df['date'] = pd.to_datetime(df['date'], format='%m-%Y')
         
+        #annual data
+        if df.loc[0]['period'][0] == 'A':
+            df = df.rename(columns={'year':'date'}, errors='raise')
+
+        print(df)
         #change index and sort
         df = df.set_index('date')
         df = df.sort_index()
 
         #drop extra cols
-        df = df.drop(columns=['period', 'year'])
+        df = df.drop(columns=['period', 'year'], errors='ignore')
 
         return df
 
-    def create_graph(self, title, clean_names=True):
+    def create_graph(self, title, graph_type='line', clean_names=True, custom_column_names=None,
+            transpose=False,):
         """
         Returns a graph-able plotly object from the given data and constructed
         dataframe. Renames columns based on the mapping of seriesIDs to locations
         from the BLS area codes.
+        Arguments:
+            - title = str; graph title
+            - clean_names = bool; replace seriesIDs in df columns with location name
+            - custom_column_names = dict; mapping of seriesID to custom defined column names
+            - transpose = bool; transpose df to graph correctly
         Returns a plotly object.
         """
-        if clean_names:
-            plotting_df = self.df.rename(columns=self.locations, errors="raise")
-        return plotting_df.plot(title = title, template="simple_white")
+        plotting_df = self.df
+        
+        #replace column names with location names
+        if clean_names and not custom_column_names:
+            plotting_df = plotting_df.rename(columns=self.locations, errors="raise")
+        
+        #replace column names with a custom name
+        if clean_names and custom_column_names:
+            if type(custom_column_names) is not dict:
+                raise TypeError("Custom column names must be of type dict.")
+            plotting_df = plotting_df.rename(columns=custom_column_names, errors="raise")
+        
+        #transpose df, typically if length is 1
+        if transpose:
+            plotting_df = plotting_df.transpose()
+
+        #return graph type
+        if graph_type == 'line':
+            return plotting_df.plot(title = title, template="simple_white")
+        if graph_type == 'bar':
+            return plotting_df.plot.bar(title = title, template="simple_white")
     
     def get_location(self):
         """
@@ -140,12 +166,14 @@ class BlsData():
         to create a dataframe of all area_codes that BLS uses. This returns a dict with the series
         IDs as keys and the location name as values.
         """
-        area_codes_df = pd.read_csv('./area_titles.csv')
-        area_codes_df = area_codes_df.set_index('area_fips')
-
         series_id_locations = {}
         for series in self.series_id_list:
-            series_id_locations[series] = area_codes_df.loc[series[3:8]]['area_title']
+            if re.match('[EN|LA]', series[0:2]):
+                area_code = re.search('^[A-Z]*(\d\d\d\d\d)', series).group(1)
+                series_id_locations[series] = qcew_area_codes_df.loc[area_code]['area_title']
+            if re.match('OE', series[0:2]):
+                area_code = re.search('^[A-Z]*(\d\d\d\d\d\d\d)', series).group(1)
+                series_id_locations[series] = oes_area_codes_df.loc[area_code]['area_name']
 
         return series_id_locations
 
