@@ -13,6 +13,7 @@ import re
 import requests
 from pyBLS import qcew_area_codes_df, oes_area_codes_df
 
+
 BLS_URL = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 
 #set plotting backend to plotly
@@ -23,27 +24,44 @@ class BlsData():
     A class designed to interact with the Bureau of Labor Statistics public API and translate the data
     into a Pandas Dataframe.
     """
-    def __init__(self, series_id_list=None, start_year=None, end_year=None, json_file=None,
-            raw_data=None):
-        
-        self.series_id_list = series_id_list
+    def __init__(self, series_ids:list, start_year:int, end_year:str, raw_data=None):
+
+        self.series_ids = series_ids
         self.start_year = start_year
         self.end_year = end_year
 
-        if not raw_data and series_id_list:
-            self.raw_data = self._request_bls_data()
-        else:
-            self.raw_data = self._read_bls_file(raw_data)
+        self.raw_data = raw_data if raw_data else self._request_bls_data() 
 
         self.df = self._construct_df()
-        self.locations = self.get_location()
+        self.locations = self._get_location()
+
+    @classmethod
+    def from_json(cls, json_file:str):
+        """
+        Alternate constructor for BlsData that takes a json file of data returned from the BLS
+        API and uses it to create a BlsData object.
+        """
+        #read file
+        with open(json_file, 'r') as json_file:
+            data = json.load(json_file)
+
+        #construct seriesID list
+        series_ids = [series['seriesID'] for series in data]
+
+        #get start year from last data point in data
+        start_year = data[-1]['data'][-1]['year']
+
+        #get end year from first data point in data
+        end_year = data[0]['data'][0]['year']
+
+        return cls(series_ids=series_ids, start_year=start_year, end_year=end_year, raw_data=data)
 
     def _request_bls_data(self):
         headers = {
             'content-type' : 'application/json',
         }
         data = json.dumps({
-            "seriesid" : self.series_id_list,
+            "seriesid" : self.series_ids,
             "startyear" : self.start_year,
             "endyear" : self.end_year,
             "catalog" : False,
@@ -57,23 +75,7 @@ class BlsData():
 
         return r.json()['Results']['series']
 
-    def _read_bls_file(self):
-        """
-        Reads from a previously constructed json file of BLS data and returns
-        the json data in a list of dictionaries.
-        """
-        with open('raw_data3_3.json') as json_file:
-            data = json.load(json_file)
-        return data
-
-    def write_to_bls_file(self, raw_data, file_name):
-        """
-        Writes raw data from BLS API out to a json file.
-        """
-        with open("file_name", 'w') as json_out:
-            json.dump(self.raw_data, json_out, indent=4)
-
-    def _construct_df(self):
+    def _construct_df(self) -> pd.DataFrame:
         """
         Constructs a pandas dataframe from the raw data returned from the BLS
         API. 
@@ -93,7 +95,7 @@ class BlsData():
 
         return self.organize_df(df)
     
-    def organize_df(self, df):
+    def organize_df(self, df:pd.DataFrame) -> pd.DataFrame:
         """
         Organizes pandas dataframe depending on the term of the data.
         Currently works for monthly and quarterly data.
@@ -123,6 +125,14 @@ class BlsData():
         df = df.drop(columns=['period', 'year'], errors='ignore')
 
         return df
+
+    def write_to_json(self, file_name:str):
+        """
+        Writes raw data from BLS API out to a json file to avoid having to re-query
+        the API for testing.
+        """
+        with open(f"{file_name.split('.')[0]}.json", 'w') as json_out:
+            json.dump(self.raw_data, json_out, indent=4)
 
     def create_graph(self, title, graph_type, clean_names=True, custom_column_names=None,
             transpose=False,):
@@ -159,14 +169,14 @@ class BlsData():
         if graph_type == 'bar':
             return plotting_df.plot.bar(title = title, template="simple_white")
     
-    def get_location(self):
+    def _get_location(self):
         """
         Uses the area_titles.csv file from https://data.bls.gov/cew/doc/titles/area/area_titles.htm
         to create a dataframe of all area_codes that BLS uses. This returns a dict with the series
         IDs as keys and the location name as values.
         """
         series_id_locations = {}
-        for series in self.series_id_list:
+        for series in self.series_ids:
             if re.match('[EN|LA]', series[0:2]):
                 if series[0:2] == 'EN':
                     area_code = re.search('^[A-Z]{3}([\d|U][\d|S]\d\d\d)', series).group(1)

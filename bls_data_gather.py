@@ -24,5 +24,5 @@ for waedd_section in bls_list:
                                     custom_column_names=waedd_section.get('custom_column_names'),
                                     transpose=waedd_section.get('transpose'),
     )
-    # fig.show()
-    fig.write_html(f"./graphs/{waedd_section['graph_file']}")
+    fig.show()
+    # fig.write_html(f"./graphs/{waedd_section['graph_file']}")
