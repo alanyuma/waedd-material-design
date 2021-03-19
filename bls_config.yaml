@@ -1,27 +1,27 @@
-# ---
-# #section 3.3: All employees (Test Data)
-# - seriesIDs:
-#     - ENU0401210010
-#     - ENU0401510010
-#     - ENU0402710010
-#   start_year: 2015
-#   end_year: 2020
-#   filename: 'all_employees'
-#   graph_name: 'All Employees'
-#   graph_type: 'line'
+---
+#section 3.3: All employees (Test Data)
+- seriesIDs:
+    - ENU0401210010
+    - ENU0401510010
+    - ENU0402710010
+  start_year: 2015
+  end_year: 2020
+  filename: 'all_employees'
+  graph_name: 'All Employees'
+  graph_type: 'line'
 
-# #Section 3.3: Mean Wage Graph
-# - seriesIDs:
-#     - OEUS040000000000000000003  #AZ entire state
-#     - OEUM002942000000000000003  #Lake Havasu City
-#     - OEUM004974000000000000003  #Yuma 
-#     - OEUM040000100000000000003  #AZ nonmetropolitan area
-#   start_year: 2019
-#   end_year: 2019
-#   filename: 'mean_weekly_wage'
-#   graph_name: 'Mean Weekly Wage by Region'
-#   graph_type: 'bar'
-#   transpose: True
+#Section 3.3: Mean Wage Graph
+- seriesIDs:
+    - OEUS040000000000000000003  #AZ entire state
+    - OEUM002942000000000000003  #Lake Havasu City
+    - OEUM004974000000000000003  #Yuma 
+    - OEUM040000100000000000003  #AZ nonmetropolitan area
+  start_year: 2019
+  end_year: 2019
+  filename: 'mean_weekly_wage'
+  graph_name: 'Mean Weekly Wage by Region'
+  graph_type: 'bar'
+  transpose: True
 
 #section 3.3: Average Weekly Wages
 - seriesIDs:
@@ -36,53 +36,53 @@
   graph_name: 'Average Weekly Wages'
   graph_type: 'line'
 
-# #Section 3.4: Unemployment Rates
-# - seriesIDs:
-#     - LAUST040000000000003 #Arizona unemployment rate
-#     - LAUCN040120000000003 #La Paz County
-#     - LAUCN040270000000003 #Yuma County
-#     - LAUCN040150000000003 #Mohave
-#   start_year: 2015
-#   end_year: 2020
-#   filename: 'ceds3_4_unemployment_rate'
-#   graph_name: 'Unemployment Rates'
-#   graph_type: 'line'
+#Section 3.4: Unemployment Rates
+- seriesIDs:
+    - LAUST040000000000003 #Arizona unemployment rate
+    - LAUCN040120000000003 #La Paz County
+    - LAUCN040270000000003 #Yuma County
+    - LAUCN040150000000003 #Mohave
+  start_year: 2015
+  end_year: 2020
+  filename: 'ceds3_4_unemployment_rate'
+  graph_name: 'Unemployment Rates'
+  graph_type: 'line'
 
-# #section 3.4: La Paz County Unemployment
-# - seriesIDs:
-#     - LAUCN040120000000004 #La Paz Unemployment
-#     - LAUCN040120000000005 #La Paz Employment
-#   start_year: 2019
-#   end_year: 2020
-#   filename: 'ceds3_4_la_paz_employment'
-#   graph_name: 'La Paz County Employment'
-#   custom_column_names:
-#     "LAUCN040120000000004" : "Unemployment"
-#     "LAUCN040120000000005" : "Employment"
-#   graph_type: 'bar'
+#section 3.4: La Paz County Unemployment
+- seriesIDs:
+    - LAUCN040120000000004 #La Paz Unemployment
+    - LAUCN040120000000005 #La Paz Employment
+  start_year: 2019
+  end_year: 2020
+  filename: 'ceds3_4_la_paz_employment'
+  graph_name: 'La Paz County Employment'
+  custom_column_names:
+    "LAUCN040120000000004" : "Unemployment"
+    "LAUCN040120000000005" : "Employment"
+  graph_type: 'bar'
 
-# #Section 3.4: Yuma County Unemployment
-# - seriesIDs:
-#     - LAUCN040270000000004 #Yuma County Unemployment
-#     - LAUCN040270000000005 #Yuma County Employment
-#   start_year: 2015
-#   end_year: 2020
-#   filename: 'ceds3_4_yuma_employment'
-#   graph_name: 'Yuma County Employment'
-#   custom_column_names:
-#     "LAUCN040270000000004" : "Unemployment"
-#     "LAUCN040270000000005" : "Employment"
-#   graph_type: 'bar'
+#Section 3.4: Yuma County Unemployment
+- seriesIDs:
+    - LAUCN040270000000004 #Yuma County Unemployment
+    - LAUCN040270000000005 #Yuma County Employment
+  start_year: 2015
+  end_year: 2020
+  filename: 'ceds3_4_yuma_employment'
+  graph_name: 'Yuma County Employment'
+  custom_column_names:
+    "LAUCN040270000000004" : "Unemployment"
+    "LAUCN040270000000005" : "Employment"
+  graph_type: 'bar'
 
-# #Section 3.4: Mohave County Unemployment
-# - seriesIDs:
-#     - LAUCN040150000000004 #Mohave County Unemployment
-#     - LAUCN040150000000005 #Mohave County Employment
-#   start_year: 2015
-#   end_year: 2020
-#   filename: 'ceds3_4_mohave_employment'
-#   graph_name: 'Mohave County Employment'
-#   custom_column_names:
-#     "LAUCN040150000000004" : "Unemployment"
-#     "LAUCN040150000000005" : "Employment"
-#   graph_type: 'bar'
+#Section 3.4: Mohave County Unemployment
+- seriesIDs:
+    - LAUCN040150000000004 #Mohave County Unemployment
+    - LAUCN040150000000005 #Mohave County Employment
+  start_year: 2015
+  end_year: 2020
+  filename: 'ceds3_4_mohave_employment'
+  graph_name: 'Mohave County Employment'
+  custom_column_names:
+    "LAUCN040150000000004" : "Unemployment"
+    "LAUCN040150000000005" : "Employment"
+  graph_type: 'bar'

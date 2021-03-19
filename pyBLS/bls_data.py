@@ -4,14 +4,12 @@ APCV 498 - Senior Capstone
 
 A class designed to interact with the bls.gov API.
 """
-import calendar
 import json
 import os
-import pandas as pd
-import pkg_resources
 import re
+import pandas as pd
 import requests
-from pyBLS import qcew_area_codes_df, oes_area_codes_df
+from pybls import qcew_area_codes_df, oes_area_codes_df
 
 
 BLS_URL = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
@@ -21,8 +19,8 @@ pd.options.plotting.backend = "plotly"
 
 class BlsData():
     """
-    A class designed to interact with the Bureau of Labor Statistics public API and translate the data
-    into a Pandas Dataframe.
+    A class designed to interact with the Bureau of Labor Statistics public API and 
+    translate the data into a Pandas Dataframe.
     """
     def __init__(self, series_ids:list, start_year:int, end_year:str, raw_data=None):
 
@@ -30,7 +28,7 @@ class BlsData():
         self.start_year = start_year
         self.end_year = end_year
 
-        self.raw_data = raw_data if raw_data else self._request_bls_data() 
+        self.raw_data = raw_data if raw_data else self._request_bls_data()
 
         self.df = self._construct_df()
         self.locations = self._get_location()
@@ -69,21 +67,21 @@ class BlsData():
             "aspects" : False,
             "registrationKey" : os.environ.get('BLS_API_KEY'),
         })
-        
-        #make post request
-        r = requests.post(BLS_URL, data=data, headers=headers)
 
-        return r.json()['Results']['series']
+        #make post request
+        response = requests.post(BLS_URL, data=data, headers=headers)
+
+        return response.json()['Results']['series']
 
     def _construct_df(self) -> pd.DataFrame:
         """
         Constructs a pandas dataframe from the raw data returned from the BLS
-        API. 
+        API.
         Returns a dataframe organized by the data frequency in organize_df()
         """
         #make an empty dataframe with desired cols
         cols = ['year', 'period']
-        df = pd.DataFrame(columns=cols)
+        bls_df = pd.DataFrame(columns=cols)
 
         #use for loop to create df
         for bls_series in self.raw_data:
@@ -91,10 +89,10 @@ class BlsData():
             series_df = series_df[cols + ['value']]
             series_df['value'] = pd.to_numeric(series_df['value'])
             series_df = series_df.rename(columns={'value' : bls_series['seriesID']})
-            df = df.merge(right=series_df, on=['year', 'period'], how='outer')
+            bls_df = bls_df.merge(right=series_df, on=['year', 'period'], how='outer')
 
-        return self.organize_df(df)
-    
+        return self.organize_df(bls_df)
+
     def organize_df(self, df:pd.DataFrame) -> pd.DataFrame:
         """
         Organizes pandas dataframe depending on the term of the data.
@@ -112,7 +110,7 @@ class BlsData():
             df['period'] = df['period'].str.replace('M', '')
             df['date'] = df['period'].map(str)+ '-' +df['year'].map(str)
             df['date'] = pd.to_datetime(df['date'], format='%m-%Y')
-        
+
         #annual data
         if df.loc[0]['period'][0] == 'A':
             df = df.rename(columns={'year':'date'}, errors='raise')
@@ -134,8 +132,8 @@ class BlsData():
         with open(f"{file_name.split('.')[0]}.json", 'w') as json_out:
             json.dump(self.raw_data, json_out, indent=4)
 
-    def create_graph(self, title, graph_type, clean_names=True, custom_column_names=None,
-            transpose=False,):
+    def create_graph(self, title:str, graph_type:str, clean_names:bool=True,
+            custom_column_names:dict=None, transpose:bool=False):
         """
         Returns a graph-able plotly object from the given data and constructed
         dataframe. Renames columns based on the mapping of seriesIDs to locations
@@ -147,28 +145,34 @@ class BlsData():
             - transpose = bool; transpose df to graph correctly
         Returns a plotly object.
         """
+        #check graph type
+        accepted_graphs = ['line', 'bar']
+        if graph_type not in accepted_graphs:
+            raise ValueError(f"Invalid graph type. Expected one of: {', '.join(accepted_graphs)}")
+
         plotting_df = self.df
-        
+
         #replace column names with location names
         if clean_names and not custom_column_names:
             plotting_df = plotting_df.rename(columns=self.locations, errors="raise")
-        
+
         #replace column names with a custom name
         if clean_names and custom_column_names:
-            if type(custom_column_names) is not dict:
+            if not isinstance(custom_column_names, dict):
                 raise TypeError("Custom column names must be of type dict.")
             plotting_df = plotting_df.rename(columns=custom_column_names, errors="raise")
-        
+
         #transpose df, typically if length is 1
         if transpose:
             plotting_df = plotting_df.transpose()
 
-        #return graph type
-        if graph_type == 'line':
-            return plotting_df.plot(title = title, template="simple_white")
+        #bar graph
         if graph_type == 'bar':
             return plotting_df.plot.bar(title = title, template="simple_white")
-    
+
+        #line graph
+        return plotting_df.plot(title = title, template="simple_white")
+
     def _get_location(self):
         """
         Uses the area_titles.csv file from https://data.bls.gov/cew/doc/titles/area/area_titles.htm
@@ -179,15 +183,12 @@ class BlsData():
         for series in self.series_ids:
             if re.match('[EN|LA]', series[0:2]):
                 if series[0:2] == 'EN':
-                    area_code = re.search('^[A-Z]{3}([\d|U][\d|S]\d\d\d)', series).group(1)
+                    area_code = re.search(r'^[A-Z]{3}([\d|U][\d|S]\d\d\d)', series).group(1)
                 if series[0:2] == 'LA':
-                    area_code = re.search('^[A-Z]{5}(\d\d\d\d\d)', series).group(1)
+                    area_code = re.search(r'^[A-Z]{5}(\d\d\d\d\d)', series).group(1)
                 series_id_locations[series] = qcew_area_codes_df.loc[area_code]['area_title']
             if re.match('OE', series[0:2]):
-                area_code = re.search('^[A-Z]*(\d\d\d\d\d\d\d)', series).group(1)
+                area_code = re.search(r'^[A-Z]*(\d\d\d\d\d\d\d)', series).group(1)
                 series_id_locations[series] = oes_area_codes_df.loc[area_code]['area_name']
 
         return series_id_locations
-
-
-    
