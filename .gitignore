@@ -1,0 +1,4 @@
+*__pycache__
+.vscode
+*.json
+txt_to_csv.py
