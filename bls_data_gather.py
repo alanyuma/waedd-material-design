@@ -17,10 +17,17 @@ for waedd_section in bls_list:
         waedd_section['start_year'],
         waedd_section['end_year'],
     )
-
+    #create graph and table
     fig = section_data.create_graph(waedd_section['graph_name'],
                                     graph_type=waedd_section['graph_type'],
                                     custom_column_names=waedd_section.get('custom_column_names'),
                                     transpose=waedd_section.get('transpose'),
     )
-    fig.write_html(f"./graphs/{waedd_section['filename']}.html")
+    table = section_data.create_table(
+            custom_column_names=waedd_section.get('custom_column_names'),
+            index_color='orange',
+    )
+
+    #save graph and table to html files
+    fig.write_html(f"./graphs/{waedd_section['filename']}.html", include_plotlyjs='cdn')
+    table.write_html(f"./tables/{waedd_section['filename']}.html", include_plotlyjs='cdn')

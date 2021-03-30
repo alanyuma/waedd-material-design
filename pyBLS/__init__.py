@@ -21,3 +21,8 @@ qcew_area_codes_df = qcew_area_codes_df.set_index('area_fips')
 stream = pkg_resources.resource_stream(__name__, 'data/oes_areas.csv')
 oes_area_codes_df = pd.read_csv(stream, dtype={'area_code':str})
 oes_area_codes_df = oes_area_codes_df.set_index('area_code')
+
+#Construct LA area codes for Local Area Employment Statistics locations
+stream = pkg_resources.resource_stream(__name__, 'data/la_area.csv')
+la_area_codes_df = pd.read_csv(stream)
+la_area_codes_df = la_area_codes_df.set_index('area_code')
