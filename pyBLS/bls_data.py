@@ -8,8 +8,9 @@ import json
 import os
 import re
 import pandas as pd
+import plotly.graph_objects as go
 import requests
-from pybls import qcew_area_codes_df, oes_area_codes_df
+from pybls import la_area_codes_df, oes_area_codes_df, qcew_area_codes_df
 
 
 BLS_URL = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
@@ -19,7 +20,7 @@ pd.options.plotting.backend = "plotly"
 
 class BlsData():
     """
-    A class designed to interact with the Bureau of Labor Statistics public API and 
+    A class designed to interact with the Bureau of Labor Statistics public API and
     translate the data into a Pandas Dataframe.
     """
     def __init__(self, series_ids:list, start_year:int, end_year:str, raw_data=None):
@@ -30,7 +31,8 @@ class BlsData():
 
         self.raw_data = raw_data if raw_data else self._request_bls_data()
 
-        self.df = self._construct_df()
+        self.raw_df = self._construct_df()
+        self.df = self.organize_df()
         self.locations = self._get_location()
 
     @classmethod
@@ -77,7 +79,7 @@ class BlsData():
         """
         Constructs a pandas dataframe from the raw data returned from the BLS
         API.
-        Returns a dataframe organized by the data frequency in organize_df()
+        Returns a pandas dataframe
         """
         #make an empty dataframe with desired cols
         cols = ['year', 'period']
@@ -91,25 +93,28 @@ class BlsData():
             series_df = series_df.rename(columns={'value' : bls_series['seriesID']})
             bls_df = bls_df.merge(right=series_df, on=['year', 'period'], how='outer')
 
-        return self.organize_df(bls_df)
+        return bls_df
 
-    def organize_df(self, df:pd.DataFrame) -> pd.DataFrame:
+    def organize_df(self) -> pd.DataFrame:
         """
         Organizes pandas dataframe depending on the term of the data.
         Currently works for monthly and quarterly data.
         Returns a pandas dataframe.
         """
+        #Deep copy the raw dataframe to avoid overwriting it
+        df = self.raw_df.copy()
+
         #quarterly data
         if df.loc[0]['period'][0] == 'Q':
             df['period'] = df['period'].str.replace('0', '')
             df['date'] = df['year'].map(str)+ '-' +df['period'].map(str)
-            df['date'] = pd.to_datetime(df['date'])
+            df['date'] = pd.to_datetime(df['date']).apply(lambda x: x.strftime('%Y-%m'))
 
         #monthly data
         if df.loc[0]['period'][0] == 'M':
             df['period'] = df['period'].str.replace('M', '')
             df['date'] = df['period'].map(str)+ '-' +df['year'].map(str)
-            df['date'] = pd.to_datetime(df['date'], format='%m-%Y')
+            df['date'] = pd.to_datetime(df['date'], format='%m-%Y').apply(lambda x: x.strftime('%Y-%m'))
 
         #annual data
         if df.loc[0]['period'][0] == 'A':
@@ -133,7 +138,8 @@ class BlsData():
             json.dump(self.raw_data, json_out, indent=4)
 
     def create_graph(self, title:str, graph_type:str, clean_names:bool=True,
-            custom_column_names:dict=None, transpose:bool=False):
+            custom_column_names:dict=None, transpose:bool=False,
+            short_location_names:bool=True) -> pd.DataFrame.plot:
         """
         Returns a graph-able plotly object from the given data and constructed
         dataframe. Renames columns based on the mapping of seriesIDs to locations
@@ -143,6 +149,7 @@ class BlsData():
             - clean_names = bool; replace seriesIDs in df columns with location name
             - custom_column_names = dict; mapping of seriesID to custom defined column names
             - transpose = bool; transpose df to graph correctly
+            - short_location_names = bool; removes the state from the coumn names to shorten the length
         Returns a plotly object.
         """
         #check graph type
@@ -150,17 +157,8 @@ class BlsData():
         if graph_type not in accepted_graphs:
             raise ValueError(f"Invalid graph type. Expected one of: {', '.join(accepted_graphs)}")
 
-        plotting_df = self.df
-
-        #replace column names with location names
-        if clean_names and not custom_column_names:
-            plotting_df = plotting_df.rename(columns=self.locations, errors="raise")
-
-        #replace column names with a custom name
-        if clean_names and custom_column_names:
-            if not isinstance(custom_column_names, dict):
-                raise TypeError("Custom column names must be of type dict.")
-            plotting_df = plotting_df.rename(columns=custom_column_names, errors="raise")
+        #create cleaned df to use to plot data
+        plotting_df = self.clean_df(clean_names, custom_column_names, short_location_names)
 
         #transpose df, typically if length is 1
         if transpose:
@@ -173,6 +171,66 @@ class BlsData():
         #line graph
         return plotting_df.plot(title = title, template="simple_white")
 
+    def create_table(self, clean_names:bool=True, custom_column_names:dict=None,
+            short_location_names:bool=True, index_color:str=None) -> str:
+        """
+        Creates an html table from the dataframe with cleaned columns.
+        Returns str
+        Arguments:
+            - clean_names = bool; replaces column names with locations or custom names
+            - custom_column_names = dict; mapping of series ID to custom column name
+            - short_location_names = bool; removes the state from the coumn names to shorten the length
+        """
+        #clean dataframe
+        table_df = self.clean_df(clean_names, custom_column_names, short_location_names)
+
+        #set index column color to the color passed in, set the rest to white and light gray striped
+        fill_color = []
+        for col in [table_df.index.name] + table_df.columns.to_list():
+            if index_color and col == table_df.index.name:
+                fill_color.append(index_color)
+            else:
+                fill_color.append(['white', 'lightgrey']*len(table_df.index))
+
+        #Make list of all df values by column
+        col_vals = [table_df[col].to_list() for col in table_df]
+
+        #return the created table including the index
+        return go.Figure(data=[go.Table(
+        header=dict(values=[table_df.index.name] + table_df.columns.to_list(),
+                    fill_color=index_color,
+                    font=dict(color='black', size=12)),
+        cells=dict(values=[table_df.index.to_list()] + col_vals,
+                   fill_color = fill_color,
+                   font=dict(color='black', size=11))
+        )])
+
+    def clean_df(self, clean_names:bool=True, custom_column_names:dict=None,
+            short_location_names:bool=True) -> pd.DataFrame:
+        """
+        Cleans the standard dataframe up by renaming columns with locations, or applying
+        the custom column names.
+        Arguments:
+            - clean_names = bool; replaces column names with locations or custom names
+            - custom_column_names = dict; mapping of series ID to custom column name
+            - short_location_names = bool; removes the state from the coumn names to shorten the length
+        """
+        #create temp df to use for the table
+        table_df = self.df
+
+        #replace column names with location names
+        if clean_names and not custom_column_names:
+            cols = {ser_id: re.split('--|,', loc)[0] for ser_id,loc in self.locations.items()} if short_location_names else self.locations
+            table_df = table_df.rename(columns=cols, errors="raise")
+
+        #replace column names with a custom name
+        if clean_names and custom_column_names:
+            if not isinstance(custom_column_names, dict):
+                raise TypeError("Custom column names must be of type dict.")
+            table_df = table_df.rename(columns=custom_column_names, errors="raise")
+
+        return table_df
+
     def _get_location(self):
         """
         Uses the area_titles.csv file from https://data.bls.gov/cew/doc/titles/area/area_titles.htm
@@ -181,12 +239,12 @@ class BlsData():
         """
         series_id_locations = {}
         for series in self.series_ids:
-            if re.match('[EN|LA]', series[0:2]):
-                if series[0:2] == 'EN':
-                    area_code = re.search(r'^[A-Z]{3}([\d|U][\d|S]\d\d\d)', series).group(1)
-                if series[0:2] == 'LA':
-                    area_code = re.search(r'^[A-Z]{5}(\d\d\d\d\d)', series).group(1)
+            if re.match('EN', series[0:2]):
+                area_code = re.search(r'^[A-Z]{3}([\d|U][\d|S]\d\d\d)', series).group(1)
                 series_id_locations[series] = qcew_area_codes_df.loc[area_code]['area_title']
+            if series[0:2] == 'LA':
+                area_code = re.search(r'^[A-Z]{3}([A-Z]{2}\d{13})', series).group(1)
+                series_id_locations[series] = la_area_codes_df.loc[area_code]['area_text']
             if re.match('OE', series[0:2]):
                 area_code = re.search(r'^[A-Z]*(\d\d\d\d\d\d\d)', series).group(1)
                 series_id_locations[series] = oes_area_codes_df.loc[area_code]['area_name']

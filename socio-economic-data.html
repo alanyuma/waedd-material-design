@@ -87,7 +87,8 @@ body {font-family: "Roboto", sans-serif}
       The US Census Bureau American QuickFacts provides statistics for all states and counties, and for cities and towns with a population of 5,000 or more. 
     </p>
     <h5>Population Data (not sessonally adjusted)</h5>
-    <iframe title="region population data" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSQvvCN_x69cVEBIECOcu3QGVtDWuQk9ObuZJKxjyzNiU2jCoxSVGaKDt8qALGpjyYzWTf0cKAHk2gI/pubchart?oid=71761858&amp;format=interactive" width="485" height="360"></iframe>
+    <iframe title="current population plotly" src="./graphs/current_population_pie.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+    <iframe src="./tables/current_population.html" frameborder="0" width="500" height="350" seamless="seamless"></iframe>
     <footer>
         Source: U.S. Bureau of Economic Analysis
     </footer>
@@ -101,21 +102,26 @@ body {font-family: "Roboto", sans-serif}
               <em>Note: Displayed below in 5-year increments.</em>
             </p>
     <h5>2020-2055 Arizona State and County Population Projections</h5> 
-    <iframe title="arizona state and county population projections" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHt-JaPMo7_9URg1u3ISEEopP8OlhFs-25MMUDuBfgWBgxB40Ceu1A2qX6TTQftBa6463mj2bVPbVW/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="625" height="335"></iframe>
-  <footer>
+    <iframe title="az population predictions plotly" src="./graphs/Arizona_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+    <iframe title="la paz population predictions plotly" src="./graphs/la_paz_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+    <iframe title="mohave population predictions plotly" src="./graphs/mohave_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+    <iframe title="yuma population predictions plotly" src="./graphs/yuma_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+    <iframe src="./tables/population_predictions.html" width="1000" height="400" frameborder="0" scrolling="no"></iframe>
+    <footer>
         Source: U.S. Bureau of Economic Analysis
   </footer> 
   <h6><a href="ceds.html">Return to CEDS</a></h6>
     <hr>
         <h3 id="c33">3.3 Employment & Wage Information</h3>
-        <iframe title="district employment and wage information graph" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT_wqRizUqEiH9oqxq05nXyhbJkDYRUkU9XCVz6LOlN98AclPZ80b5-xPSvnAO8sra66TSG-a5dmCMK/pubchart?oid=437215225&amp;format=interactive" width="630" height="375"></iframe>
+        <iframe title="mean weekly wage plotly" src="./graphs/mean_weekly_wage.html" width="700" height="600" frameborder="0" scrolling="no"></iframe>
     <footer>
       Source: <a href="https://www.bls.gov/oes/2018/may/oes_az.htm" target="_blank" rel="noopener">Arizona - May 2018 OES State Occupational Employment and Wage Estimates (May 2018)</a>
     </footer>
     <h6><a href="ceds.html">Return to CEDS</a></h6>
   <hr>
         <h5>Average Weekly Wages by county in Arizona, the second quarter of 2019</h5>
-        <iframe title="average weekly wages by county in arizona" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSEzgWkTvU-4gIpa0jO93afGnHiuUUHGsWLKGcem0nBQdYPMD5zktucQbz1dH37a38vk0i-8AUagNZX/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="590" height="225"></iframe>
+        <iframe src="./graphs/ceds3_3_avg_weekly_wages.html" width="700" height="600" frameborder="0" scrolling="no"></iframe>
+        <iframe src="./tables/ceds3_3_avg_weekly_wages.html" width="800" height="400" frameborder="0"></iframe>
     <footer>
       Source: <a href="https://www.bls.gov/regions/west/news-release/countyemploymentandwages_arizona.htm#Table2" target="_blank" rel="noopener">BLS (June 2019)</a>
     </footer>
@@ -123,14 +129,24 @@ body {font-family: "Roboto", sans-serif}
     <hr>
         <h3 id="c34">3.4 Unemployment Summary by County</h3>
         <h5>La Paz County - Monthly Summary</h5>
-        <iframe title="la paz county unemployment summary" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQYtXym0C3YhdmhUiEigK8Gqa2E_mqSRVbUs4x2ZaytoAP3CSrYGpf2IUxpcDJcxfvC1SinDM7hLOzM/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="720" height="180"></iframe>
-    <footer>
+        <iframe src="./graphs/ceds3_4_la_paz_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+        <iframe src="./tables/ceds3_4_la_paz_employment.html" width="600" height="400" frameborder="0"></iframe>
+        <footer>
       Source: <a href="https://www.azeconomy.org/data/la-paz-county/" target="_blank" rel="noopener">UofA Eller Economic &amp; Business Research Center - La Paz County Summary (April 2020)</a>
     </footer>
     <h6><a href="ceds.html">Return to CEDS</a></h6>
     <hr>
+    <h5>Mohave County - Monthly Summary</h5>
+        <iframe src="./graphs/ceds3_4_mohave_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+        <iframe src="./tables/ceds3_4_mohave_employment.html" width="600" height="400" frameborder="0"></iframe>
+    <hr>
+    <h5>Yuma County - Monthly Summary</h5>
+        <iframe src="./graphs/ceds3_4_yuma_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+        <iframe src="./tables/ceds3_4_yuma_employment.html" width="600" height="400" frameborder="0"></iframe>
+    <hr>
   <h5>Lake Havasu City & Kingman MSA - Monthly Summary</h5>
-  <iframe title="lake havasu city and kingman arizona unemployment summary" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQCBjRvfl_23eMvcQdmeNkDF4NlrshQ-tTqv_C3Wg5lfxhfh9Wk5oJMENBmZoY9vCLwifQWqwJSbUfM/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="590" height="180"></iframe>
+  <iframe src="./graphs/ceds3_4_lake_havasu_kingman_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+  <iframe src="./tables/ceds3_4_lake_havasu_kingman_employment.html" width="600" height="400" frameborder="0"></iframe>
     <br>
     <footer>
       Source: <a href="https://www.azeconomy.org/data/mohave-county/" target="_blank" rel="noopener">UofA Eller Economic & Business Research Center - Lake Havasu City & Mohave MSA Summary (April 2020)</a>
@@ -138,7 +154,8 @@ body {font-family: "Roboto", sans-serif}
     <h6><a href="ceds.html">Return to CEDS</a></h6>
     <hr>
     <h5>Yuma MSA - Monthly Summary</h5>
-    <iframe title="yuma county arizona unemployment summary" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQoIx21kMlhMlSsfRp4cqZ5USrvjZRDOImaoIQYSDT9QZtmo6DtbN67TmhbCem-CP3U38PQYlkjBX74/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="710" height="180"></iframe>
+    <iframe src="./graphs/ceds3_4_yuma_msa_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+    <iframe src="./tables/ceds3_4_yuma_msa_employment.html" width="600" height="400" frameborder="0"></iframe>
     <br>
     <footer>
       Source: <a href="https://www.azeconomy.org/data/yuma-county-2/" target="_blank" rel="noopener">UofA Eller Economic & Business Research Center - Yuma MSA Summary (April 2020)</a>
