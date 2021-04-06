@@ -62,10 +62,11 @@ def current_populations():
     pop_df = pop_df.drop(pop_df.columns[42], axis=1)
 
     #graph data
-    graphing_df = pop_df.loc[['Yuma Total', 'La Paz Total', 'Mohave Total', 'Arizona***'], [2020]]
+    graphing_df = pop_df.loc[['Yuma Total', 'La Paz Total', 'Mohave Total'], [2020]]
     graphing_df = graphing_df.rename(index=lambda x: re.split(r'\*|\s(?=Total)', x)[0])
     graphing_df = graphing_df.sort_values(by=[2020], ascending=False)
     fig = px.pie(graphing_df, values=2020, names=graphing_df.index)
+    fig.update_traces(textinfo='percent+label')
 
     #set table colors
     fill_color = table_color(graphing_df, index_color='orange')
@@ -79,6 +80,7 @@ def current_populations():
                    fill_color = fill_color,
                    align='left')
     )])
+
     fig.write_html("./graphs/current_population_pie.html", include_plotlyjs='cdn')
     table.write_html("./tables/current_population.html", include_plotlyjs='cdn')
 
@@ -109,6 +111,8 @@ def population_predictions():
                       x=population_df.index,
                       y=region,
                       title=f'{region} Population Prediction 2018-2055')
+        fig.update_traces(mode='markers+lines', hovertemplate='Pop=%{y}')
+        fig.update_layout(hovermode='x')
         fig.write_html(f"./graphs/{region.lower().replace(' ','_')}_pop_predictions.html", include_plotlyjs='cdn')
 
     #data is indexed by date, so data needs to be organized by column in a list
@@ -129,5 +133,5 @@ def population_predictions():
     table.write_html("./tables/population_predictions.html", include_plotlyjs='cdn')
 
 if __name__ == '__main__':
-    current_populations()
+    # current_populations()
     population_predictions()

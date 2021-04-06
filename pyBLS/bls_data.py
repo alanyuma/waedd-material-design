@@ -9,6 +9,7 @@ import os
 import re
 import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 import requests
 from pybls import la_area_codes_df, oes_area_codes_df, qcew_area_codes_df
 
@@ -139,7 +140,7 @@ class BlsData():
 
     def create_graph(self, title:str, graph_type:str, clean_names:bool=True,
             custom_column_names:dict=None, transpose:bool=False,
-            short_location_names:bool=True) -> pd.DataFrame.plot:
+            short_location_names:bool=True, graph_labels:dict=None) -> pd.DataFrame.plot:
         """
         Returns a graph-able plotly object from the given data and constructed
         dataframe. Renames columns based on the mapping of seriesIDs to locations
@@ -150,6 +151,7 @@ class BlsData():
             - custom_column_names = dict; mapping of seriesID to custom defined column names
             - transpose = bool; transpose df to graph correctly
             - short_location_names = bool; removes the state from the coumn names to shorten the length
+            - graph_labels = dict; a mapping of x and y axis labels to output a graph with custom labels
         Returns a plotly object.
         """
         #check graph type
@@ -166,13 +168,18 @@ class BlsData():
 
         #bar graph
         if graph_type == 'bar':
-            return plotting_df.plot.bar(title = title, template="simple_white")
+            return px.bar(plotting_df,
+                          title=title,
+                          labels=graph_labels if graph_labels else {})
 
         #line graph
-        return plotting_df.plot(title = title, template="simple_white")
+        return px.line(plotting_df,
+                      labels=graph_labels if graph_labels else {},
+                      title=title)
 
     def create_table(self, clean_names:bool=True, custom_column_names:dict=None,
-            short_location_names:bool=True, index_color:str=None) -> str:
+            short_location_names:bool=True, index_color:str=None,
+            descending:bool=False) -> str:
         """
         Creates an html table from the dataframe with cleaned columns.
         Returns str
@@ -180,9 +187,14 @@ class BlsData():
             - clean_names = bool; replaces column names with locations or custom names
             - custom_column_names = dict; mapping of series ID to custom column name
             - short_location_names = bool; removes the state from the coumn names to shorten the length
+            - descending = bool; changes indexes to sort on descending if True.
         """
         #clean dataframe
         table_df = self.clean_df(clean_names, custom_column_names, short_location_names)
+
+        #DF is sorted by ascending by default, change sort to descnding if ascending is false
+        if descending:
+            table_df = table_df.sort_index(ascending=False)
 
         #set index column color to the color passed in, set the rest to white and light gray striped
         fill_color = []

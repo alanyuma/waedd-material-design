@@ -1,18 +1,21 @@
 ---
-#Section 3.3: Mean Wage Graph
+# Section 3.3: Mean Wage Graph NOTE: The previous year data is retired at the end of the year
+# for these series IDs. If this throws an error, please try doing a query for this data at 
+# data.bls.gov or use curl or postman.
 - seriesIDs:
     - OEUS040000000000000000003  #AZ entire state
     - OEUM002942000000000000003  #Lake Havasu City
     - OEUM004974000000000000003  #Yuma 
     - OEUM040000100000000000003  #AZ nonmetropolitan area
-  start_year: 2019
-  end_year: 2019
+  start_year: 2020
+  end_year: 2020
   filename: 'mean_weekly_wage'
   graph_name: 'Mean Weekly Wage by Region'
   graph_type: 'bar'
   transpose: True
+  hide_legend: True
 
-# #section 3.3: Average Weekly Wages
+#section 3.3: Average Weekly Wages
 - seriesIDs:
     - ENUUS00040010  #entire US
     - ENU0400040010  #Arizona
@@ -24,6 +27,12 @@
   filename: 'ceds3_3_avg_weekly_wages'
   graph_name: 'Average Weekly Wages'
   graph_type: 'line'
+  graph_mode: 'markers+lines'
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Amount in USD"
+  hovertemplate: '%{y:$.2f}'
+  sort_descending: True
 
 #Section 3.4: Unemployment Rates
 - seriesIDs:
@@ -37,7 +46,7 @@
   graph_name: 'Unemployment Rates'
   graph_type: 'line'
 
-#section 3.4: La Paz County Unemployment
+# #section 3.4: La Paz County Unemployment
 - seriesIDs:
     - LAUCN040120000000004 #La Paz Unemployment
     - LAUCN040120000000005 #La Paz Employment
@@ -51,6 +60,10 @@
     "LAUCN040120000000005" : "Employment"
     "LAUCN040120000000003" : "Unemployment Rate"
   graph_type: 'bar'
+  sort_descending: True
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Value"
 
 #Section 3.4: Yuma County Unemployment
 - seriesIDs:
@@ -66,6 +79,10 @@
     "LAUCN040270000000005" : "Employment"
     "LAUCN040270000000003" : "Unemployment Rate"
   graph_type: 'bar'
+  sort_descending: True
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Value"
 
 #Section 3.4: Mohave County Unemployment
 - seriesIDs:
@@ -81,6 +98,10 @@
     "LAUCN040150000000005" : "Employment"
     "LAUCN040150000000003" : "Unemployment Rate"
   graph_type: 'bar'
+  sort_descending: True
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Value"
 
 #Section 3.4: Lake Havasu City-Kingman, AZ Unemployment
 - seriesIDs:
@@ -96,6 +117,10 @@
     "LAUMT042942000000005" : "Employment"
     "LAUMT042942000000003" : "Unemployment Rate"
   graph_type: 'bar'
+  sort_descending: True
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Value"
 
 #Section 3.4: Lake Havasu City-Kingman, AZ Unemployment
 - seriesIDs:
@@ -111,3 +136,7 @@
     "LAUMT044974000000005" : "Employment"
     "LAUMT044974000000003" : "Unemployment Rate"
   graph_type: 'bar'
+  sort_descending: True
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "Value"
