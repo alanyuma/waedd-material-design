@@ -119,6 +119,7 @@ Arguments:
 - short_location_names = bool; removes the state from the coumn names to shorten the length. Default=`True`
 - index_color = str; the color to apply to the index column and header row. Default=`None`
 - descending = bool; changes indexes to sort on descending if True. Default=`False`
+- index_label = str; adds a custom index label to the index column in a table. Default=''
 Returns plotly.graph_object.Figure() object.
 
 ```python

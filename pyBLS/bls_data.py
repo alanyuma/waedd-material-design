@@ -184,7 +184,7 @@ class BlsData():
 
     def create_table(self, clean_names:bool=True, custom_column_names:dict=None,
             short_location_names:bool=True, index_color:str=None,
-            descending:bool=False) -> go.Figure:
+            descending:bool=False, index_label:str='') -> go.Figure:
         """
         Creates an html table from the dataframe with cleaned columns.
         Returns graph_object.Figure object.
@@ -194,6 +194,7 @@ class BlsData():
             - short_location_names = bool; removes the state from the coumn names to shorten the length
             - index_color = str; the color to apply to the index column and header row.
             - descending = bool; changes indexes to sort on descending if True.
+            - index_label = str; adds a custom index label to the index column in a table. Default=''
         """
         #clean dataframe
         table_df = self.clean_df(clean_names, custom_column_names, short_location_names)
@@ -215,7 +216,8 @@ class BlsData():
 
         #return the created table including the index
         return go.Figure(data=[go.Table(
-        header=dict(values=[table_df.index.name] + table_df.columns.to_list(),
+        # header=dict(values=[index_label if index_label else table_df.index.name] + table_df.columns.to_list(),
+        header=dict(values=[index_label] + table_df.columns.to_list(),
                     fill_color=index_color,
                     font=dict(color='black', size=12)),
         cells=dict(values=[table_df.index.to_list()] + col_vals,
