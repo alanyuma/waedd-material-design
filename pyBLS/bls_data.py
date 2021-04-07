@@ -9,14 +9,12 @@ import os
 import re
 import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 import requests
 from pybls import la_area_codes_df, oes_area_codes_df, qcew_area_codes_df
 
 
 BLS_URL = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
-
-#set plotting backend to plotly
-pd.options.plotting.backend = "plotly"
 
 class BlsData():
     """
@@ -32,7 +30,7 @@ class BlsData():
         self.raw_data = raw_data if raw_data else self._request_bls_data()
 
         self.raw_df = self._construct_df()
-        self.df = self.organize_df()
+        self.df = self._organize_df()
         self.locations = self._get_location()
 
     @classmethod
@@ -56,7 +54,12 @@ class BlsData():
 
         return cls(series_ids=series_ids, start_year=start_year, end_year=end_year, raw_data=data)
 
-    def _request_bls_data(self):
+    def _request_bls_data(self) -> list:
+        """
+        Not meant to be called outside of __init__. This method handles the API call to the BLS API
+        based on the given attributes.
+        Returns a list containing the raw results from the BLS api call.
+        """
         headers = {
             'content-type' : 'application/json',
         }
@@ -95,10 +98,10 @@ class BlsData():
 
         return bls_df
 
-    def organize_df(self) -> pd.DataFrame:
+    def _organize_df(self) -> pd.DataFrame:
         """
         Organizes pandas dataframe depending on the term of the data.
-        Currently works for monthly and quarterly data.
+        Currently works for monthly, quarterly, and annual data.
         Returns a pandas dataframe.
         """
         #Deep copy the raw dataframe to avoid overwriting it
@@ -133,24 +136,28 @@ class BlsData():
         """
         Writes raw data from BLS API out to a json file to avoid having to re-query
         the API for testing.
+        Arguments:
+            - file_name = str; Name of the file that should be outputted.
         """
         with open(f"{file_name.split('.')[0]}.json", 'w') as json_out:
             json.dump(self.raw_data, json_out, indent=4)
 
     def create_graph(self, title:str, graph_type:str, clean_names:bool=True,
             custom_column_names:dict=None, transpose:bool=False,
-            short_location_names:bool=True) -> pd.DataFrame.plot:
+            short_location_names:bool=True, graph_labels:dict=None) -> pd.DataFrame.plot:
         """
         Returns a graph-able plotly object from the given data and constructed
         dataframe. Renames columns based on the mapping of seriesIDs to locations
         from the BLS area codes.
         Arguments:
             - title = str; graph title
+            - graph_type = str;
             - clean_names = bool; replace seriesIDs in df columns with location name
             - custom_column_names = dict; mapping of seriesID to custom defined column names
             - transpose = bool; transpose df to graph correctly
             - short_location_names = bool; removes the state from the coumn names to shorten the length
-        Returns a plotly object.
+            - graph_labels = dict; a mapping of x and y axis labels to output a graph with custom labels
+        Returns a plotly express object.
         """
         #check graph type
         accepted_graphs = ['line', 'bar']
@@ -166,23 +173,35 @@ class BlsData():
 
         #bar graph
         if graph_type == 'bar':
-            return plotting_df.plot.bar(title = title, template="simple_white")
+            return px.bar(plotting_df,
+                          title=title,
+                          labels=graph_labels if graph_labels else {})
 
         #line graph
-        return plotting_df.plot(title = title, template="simple_white")
+        return px.line(plotting_df,
+                      labels=graph_labels if graph_labels else {},
+                      title=title)
 
     def create_table(self, clean_names:bool=True, custom_column_names:dict=None,
-            short_location_names:bool=True, index_color:str=None) -> str:
+            short_location_names:bool=True, index_color:str=None,
+            descending:bool=False, index_label:str='') -> go.Figure:
         """
         Creates an html table from the dataframe with cleaned columns.
-        Returns str
+        Returns graph_object.Figure object.
         Arguments:
             - clean_names = bool; replaces column names with locations or custom names
             - custom_column_names = dict; mapping of series ID to custom column name
             - short_location_names = bool; removes the state from the coumn names to shorten the length
+            - index_color = str; the color to apply to the index column and header row.
+            - descending = bool; changes indexes to sort on descending if True.
+            - index_label = str; adds a custom index label to the index column in a table. Default=''
         """
         #clean dataframe
         table_df = self.clean_df(clean_names, custom_column_names, short_location_names)
+
+        #DF is sorted by ascending by default, change sort to descnding if ascending is false
+        if descending:
+            table_df = table_df.sort_index(ascending=False)
 
         #set index column color to the color passed in, set the rest to white and light gray striped
         fill_color = []
@@ -197,7 +216,8 @@ class BlsData():
 
         #return the created table including the index
         return go.Figure(data=[go.Table(
-        header=dict(values=[table_df.index.name] + table_df.columns.to_list(),
+        # header=dict(values=[index_label if index_label else table_df.index.name] + table_df.columns.to_list(),
+        header=dict(values=[index_label] + table_df.columns.to_list(),
                     fill_color=index_color,
                     font=dict(color='black', size=12)),
         cells=dict(values=[table_df.index.to_list()] + col_vals,

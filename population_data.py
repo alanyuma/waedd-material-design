@@ -13,6 +13,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 WAEDD_DATA_DIR = "waedd_data"
+POP_EST_EXCEL_URL = 'https://www.azcommerce.com/media/1546584/estimates1980-2020.xlsx'
+POP_PREDICTION_EXCEL_URL = 'https://www.azcommerce.com/media/1544636/pop-prj-sumtable-medium-series2018-az.xlsx'
 
 def download_file(url:str):
     """
@@ -44,28 +46,35 @@ def table_color(df:pd.DataFrame, index_color:str=None) -> list:
 
 def current_populations():
     """
-    Uses the excel sheet from https://www.azcommerce.com/media/1546584/estimates1980-2020.xlsx and
-    parses into Pandas dataframe.
+    Uses the excel sheet from the POP_EST_EXCEL_URL global variable above and
+    parses into Pandas dataframe. This excel sheet contains the population estimates for the
+    current year and prior years.
+
+    Note that the `ignore_excel_lines` variable must be set to the lines in the excel sheet
+    that should be ignored by pandas when parsing into a dataframe. The easiest way to figure
+    out what lines should be ignored is to open the excel sheet and view the lines that don't
+    contain data or headings but contain notes or other formatting (like titles).
     """
-    url = 'https://www.azcommerce.com/media/1546584/estimates1980-2020.xlsx'
-    excel_file = url.split('/')[-1]
+    ignore_excel_lines = [129,130,131,132]
+    excel_file = POP_EST_EXCEL_URL.split('/')[-1]
 
     #download file if it doesn't exist in the waedd data dir
     if not os.path.exists(f"{WAEDD_DATA_DIR}/{excel_file}"):
-        download_file(url)
+        download_file(POP_EST_EXCEL_URL)
 
     #parse excel sheet to pandas df, drop last col because it produces a column of NaN values
     pop_df = pd.read_excel(f"./{WAEDD_DATA_DIR}/{excel_file}",
                             sheet_name='Estimates',
                             index_col=0,
-                            skiprows=[129,130,131,132])
+                            skiprows=ignore_excel_lines)
     pop_df = pop_df.drop(pop_df.columns[42], axis=1)
 
     #graph data
-    graphing_df = pop_df.loc[['Yuma Total', 'La Paz Total', 'Mohave Total', 'Arizona***'], [2020]]
+    graphing_df = pop_df.loc[['Yuma Total', 'La Paz Total', 'Mohave Total'], [2020]]
     graphing_df = graphing_df.rename(index=lambda x: re.split(r'\*|\s(?=Total)', x)[0])
     graphing_df = graphing_df.sort_values(by=[2020], ascending=False)
     fig = px.pie(graphing_df, values=2020, names=graphing_df.index)
+    fig.update_traces(textinfo='percent+label')
 
     #set table colors
     fill_color = table_color(graphing_df, index_color='orange')
@@ -79,29 +88,33 @@ def current_populations():
                    fill_color = fill_color,
                    align='left')
     )])
+
     fig.write_html("./graphs/current_population_pie.html", include_plotlyjs='cdn')
     table.write_html("./tables/current_population.html", include_plotlyjs='cdn')
 
 def population_predictions():
     """
-    Parses the excel sheet from here into a pandas dataframe:
-        https://www.azcommerce.com/media/1544636/pop-prj-sumtable-medium-series2018-az.xlsx
+    Parses the excel sheet from the POP_PREDICTION_EXCEL_URL global variable into a pandas
+    dataframe. This excel sheet shows the projected populations for each county in Arizona
+    through 2055.
 
-    which shows the projected populations for each county in Arizona through 2055 and parses
-    into a pandas dataFrame.
+    Note that the `ignore_excel_lines` variable must be set to the lines in the excel sheet
+    that should be ignored by pandas when parsing into a dataframe. The easiest way to figure
+    out what lines should be ignored is to open the excel sheet and view the lines that don't
+    contain data or headings but contain notes or other formatting (like titles).
     """
-    url = 'https://www.azcommerce.com/media/1544636/pop-prj-sumtable-medium-series2018-az.xlsx'
-    excel_file = url.split('/')[-1]
+    excel_file = POP_PREDICTION_EXCEL_URL.split('/')[-1]
+    ignore_excel_lines = [0,1,41,42,43,44]
     regions = ['Arizona', 'Yuma County',  'Mohave County', 'La Paz County']
 
     #download file if it doesn't exist in the waedd data dir
     if not os.path.exists(f"{WAEDD_DATA_DIR}/{excel_file}"):
-        download_file(url)
+        download_file(POP_PREDICTION_EXCEL_URL)
 
     #read excel sheet and exclude certain rows from df
     population_df = pd.read_excel(f"./{WAEDD_DATA_DIR}/{excel_file}",
                                   index_col=0,
-                                  skiprows=[0,1,41,42,43,44])
+                                  skiprows=ignore_excel_lines)
 
     #graph data 1 graph per area
     for region in regions:
@@ -109,6 +122,8 @@ def population_predictions():
                       x=population_df.index,
                       y=region,
                       title=f'{region} Population Prediction 2018-2055')
+        fig.update_traces(mode='markers+lines', hovertemplate='Pop=%{y}')
+        fig.update_layout(hovermode='x')
         fig.write_html(f"./graphs/{region.lower().replace(' ','_')}_pop_predictions.html", include_plotlyjs='cdn')
 
     #data is indexed by date, so data needs to be organized by column in a list
