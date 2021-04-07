@@ -1,4 +1,26 @@
 ---
+######
+# bls_config.py
+# written by: Aaron Finocchiaro
+# 
+# This is the configuration file for the bls_data_gather.py script. To add a new data source from BLS, 
+# add another section to this configuration file. 
+# 
+# Input guide:
+# seriesIDs = list; a list of BLS series ids, get these from data.bls.gov. REQUIRED
+# start_year = int; the beginning year of the desired data. REQUIRED
+# end_year = int; Year that you want the data to end at. REQUIRED
+# filename = str; Name used to name every outputted file. REQUIRED
+# graph_name = Title for graph
+# graph_type = str; Type of graph, options are 'line' and 'bar'. REQUIRED
+# graph_mode = str; Sets the plotly graph mode when updating the graph.
+# graph_axis_labels = dict; Sets a custom x and y axis label on the graph. 
+# hovertemplate = str; Custom display template for when a point is hovered over
+# sort_descending = bool; Sorts values in a table in descending order instead of ascending
+# transpose = bool; transposes a dataframe when graphing, default=False
+# custom_column_names = dict; sets the dataframe columns to a custom value for graphing.
+# 
+######
 # Section 3.3: Mean Wage Graph NOTE: The previous year data is retired at the end of the year
 # for these series IDs. If this throws an error, please try doing a query for this data at 
 # data.bls.gov or use curl or postman.
@@ -45,6 +67,11 @@
   filename: 'ceds3_4_unemployment_rate'
   graph_name: 'Unemployment Rates'
   graph_type: 'line'
+  graph_axis_labels:
+    "date" : "Date"
+    "value" : "% Unemployed"
+  hovertemplate: '%{y}%'
+  sort_descending: True
 
 # #section 3.4: La Paz County Unemployment
 - seriesIDs:

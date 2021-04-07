@@ -68,6 +68,46 @@ python population_data.py
 
 Using Live Server is recommended as it will display changes in real time to HTML documents. This can be downloaded and added to Visual Studio Code by going to the extensions option on the left sidebar and searching for "Live Server". Once added, to activate it just click on the `Go Live` option on the bottom right side of the screen.
 
+## Adding New Data Points from Bureau of Labor Statistics
+
+Adding a new series from the BLS is very simple. Follow these steps:
+
+1) Research and locate the data you need and find the series IDs. Use the [BLS Data](data.bls.gov) website and their data finder tools. All of these should provide you the series ID for what you are looking for, but it may take some work.
+
+2) Add an entry into the bls_config.yaml and follow the format in the example below. Note that fields that don't say required are optional.
+
+```yaml
+seriesIDs:           #List of all series IDs that you need. REQUIRED
+    - ENUUS00040010
+    - ENU0400040010
+    - ENU0401240010
+    - ENU0402740010
+    - ENU0401540010
+  start_year: 2015  #Year that you want the data to start at. REQUIRED
+  end_year: 2020    #Year that you want the data to end at. REQUIRED
+  filename: 'my_test_file'  #Name used to name every outputted file. REQUIRED
+  graph_name: 'Average Weekly Wages'  #Title for graph
+  graph_type: 'line'  #Type of graph, options are 'line' and 'bar'. REQUIRED
+  graph_mode: 'markers+lines' #Sets the plotly graph mode when updating the graph.
+  graph_axis_labels:  #Sets a custom x and y axis label on the graph. 
+    "date" : "Date"   #The key here should always be 'date'
+    "value" : "Amount in USD"  #The key here should always be 'value'
+  hovertemplate: '%{y:$.2f}'  #Custom display template for when a point is hovered over
+  sort_descending: True  #Sorts values in a table in descending order instead of ascending
+  transpose: False #transposes the dataframe when graphing, Default = False
+  custom_column_names:  #sets custom column names in the dataframe for graphs or tables
+    "ENUUS00040010" : "Region 1"
+    "ENU0400040010" : "Region 2"
+    "ENU0401240010" : "Region 3"
+    "ENU0402740010" : "Region 4"
+    "ENU0401540010" : "Region 5"
+```
+
+3) Run the script and check for errors.
+
+4) Open the HTML files for the graph or the table produced and verify that it worked and looks how you want.
+
+
 ## Necessary Data
 
 All data that is necessary for the project are located in the `waedd_data/` directory. These consist of the following documents:

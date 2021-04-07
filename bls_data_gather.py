@@ -26,14 +26,16 @@ for waedd_section in bls_list:
                                     graph_labels=waedd_section.get('graph_axis_labels'),
     )
 
-    #change graph layout
+    #change graph layout and modify graph mode or the hovertemplate if it is defined
     if waedd_section.get('graph_mode') or waedd_section.get('hovertemplate'):
         fig.update_traces(mode=waedd_section.get('graph_mode'), hovertemplate=waedd_section.get('hovertemplate'))
         fig.update_layout(hovermode='x')
 
+    #hide the legend if the hide_legend value is set to true
     if waedd_section.get('hide_legend'):
         fig.update_layout(showlegend=False)
 
+    #create the table
     table = section_data.create_table(
             custom_column_names=waedd_section.get('custom_column_names'),
             index_color='orange',
