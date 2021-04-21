@@ -25,6 +25,7 @@
 # for these series IDs. If this throws an error, please try doing a query for this data at 
 # data.bls.gov or use curl or postman.
 - seriesIDs:
+    - OEUN000000000000000000003  #Entire US
     - OEUS040000000000000000003  #AZ entire state
     - OEUM002942000000000000003  #Lake Havasu City
     - OEUM004974000000000000003  #Yuma 
@@ -149,7 +150,7 @@
     "date" : "Date"
     "value" : "Value"
 
-#Section 3.4: Lake Havasu City-Kingman, AZ Unemployment
+#Section 3.4: Yuma, AZ Unemployment
 - seriesIDs:
     - LAUMT044974000000004 #Yuma MSA Unemployment
     - LAUMT044974000000005 #Yuma MSA Employment
