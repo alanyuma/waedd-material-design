@@ -1,16 +1,33 @@
 """
-bls_data_gather.py
+section_3.py
 Written by: Aaron Finocchiaro
 
-Retrieves data from the Bureau of Labor Statistics API and formats it into Pandas Dataframes
+Creates all of the data for the section 3 graphs and tables. This will first run the functions
+related to population data, and then handle the Bureau of Labor Statistics data.
+
+usage:
+    - python section_3.py
 """
 import yaml
 from pybls.bls_data import BlsData
+from population_data import current_populations, population_predictions
+
+#####
+## Population Data ##
+#####
+current_populations()
+population_predictions()
+
+
+#####
+## Bureau of Labor Statistics data ##
+#####
 
 # read in yaml file
 with open('bls_config.yaml') as bls_yaml:
     bls_list = yaml.load(bls_yaml, Loader=yaml.FullLoader)
 
+#iterate dict from yaml config
 for waedd_section in bls_list:
     section_data = BlsData(
         waedd_section['seriesIDs'],

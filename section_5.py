@@ -2,7 +2,19 @@
 section_4.py
 Written by: Aaron Finocchiaro
 
-Gathers data for section 5 and fills a Jinja2 template to update the HTML document.
+Gathers data for section 5 from the US Census Bureau and the Bureau of Labor Statistics
+and fills a Jinja template to update the HTML document.
+
+Usage:
+    python section_5.py
+
+Adding more data:
+    - To add a new source (so a new place where data needs to be requested from), add it 
+      to the data request section.
+    - To add a new data point to the context_dict to be referenced in the jinja template,
+      just add a section to this script to pull that data out from the dataframe and add
+      it to the context_dict. Be sure to follow the sections and formatting to keep it easy
+      to follow.
 """
 import calendar
 import datetime
@@ -33,7 +45,7 @@ def comma_separated(number:int) -> str:
     return f"{number:n}"
 
 #####
-#### Make data requests and setup clean dataframes ####
+#### Data Requests ####
 #####
 
 #request Census Bureau data

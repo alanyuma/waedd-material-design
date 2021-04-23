@@ -71,7 +71,21 @@ class acsData():
 
     def _get_geo_level_code(self, geo_level:int, for_areas:list, in_areas:list) -> str:
         """
-        Matches geo level codes with input
+        Matches geo level codes with input by making a request to the geography.html page for the
+        requested group. Uses BeautifulSoup to scrape the geography.html page and find the correct
+        geography type requested. Then uses this data and the other data to produce a valid url endpoint
+        to query. Called by init.
+
+        input arguments:
+            - geo_level = int; the code corresponding to the geography type for a group, as found on
+            the geography.html page.
+            - for_areas - list; list; the list of area codes to retrieve with the query. The
+            'for' value in the API url. For any, pass in ['*']
+            - in_areas = list; the list of area codes that this query is contained in.
+              To query for any, pass '*' for the list element(s) that need to be any.
+              Default=None (This list does not need to be defined in some cases.)
+
+        returns str
         """
         geography_page_html = requests.get(f"{BASE_URL}{self.year}/acs/acs{self.survey}/geography.html")
         soup = BeautifulSoup(geography_page_html.text, "html.parser")
@@ -96,9 +110,14 @@ class acsData():
 
         return query_str
 
-    def _request_data(self) -> pd.DataFrame:
+    def _request_data(self) -> list:
         """
         Requests data from the census API for the ACS endpoint.
+
+        input args:
+            - none
+        
+        returns list
         """
         if '_' in self.group:
             get_param = f"get={self.group}"
@@ -110,9 +129,14 @@ class acsData():
 
         return raw_acs_data.json()
 
-    def _make_df(self):
+    def _make_df(self) -> pd.DataFrame:
         """
         Construct a pandas dataframe from the raw json data from the ACS api call.
+
+        input args:
+            - none
+
+        returns pandas dataframe
         """
         df = pd.DataFrame(self.raw_acs_data[1:], columns=self.raw_acs_data[0])
         df = df.loc[:,~df.columns.duplicated()]  #remove duplicate columns
@@ -122,6 +146,11 @@ class acsData():
     def clean_df(self) -> pd.DataFrame:
         """
         Replaces the column names with the actual variable names.
+
+        Input arguments:
+            - none
+        
+        returns pandas dataframe
         """
         variables_page_html = requests.get(f"{BASE_URL}{self.year}/acs/acs{self.survey}/profile/groups/{self.group.split('_')[0]}.html")
         soup = BeautifulSoup(variables_page_html.text, "html.parser")
@@ -134,8 +163,3 @@ class acsData():
 
         #replace column names
         return self.df.rename(columns=name_label_dict)
-# %%
-
-# if __name__ == '__main__':
-    # test = acsData(5, 2019, 'DP03', 160, ['39370', '08220', '37620'], ['04'], 'profile')
-    # test2 = acsData(5, 2019, 'DP03', 140, ['940501'], ['04', '015'], 'profile')
