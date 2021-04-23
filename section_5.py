@@ -22,7 +22,7 @@ import locale
 import pandas as pd
 from jinja2 import FileSystemLoader, Environment
 from pybls.bls_data import BlsData
-from pyCensus.pyAcs import acsData
+from pyCensus.acsData import acsData
 
 #constants
 locale.setlocale(locale.LC_ALL, '')

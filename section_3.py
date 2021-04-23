@@ -18,7 +18,6 @@ from population_data import current_populations, population_predictions
 current_populations()
 population_predictions()
 
-
 #####
 ## Bureau of Labor Statistics data ##
 #####
