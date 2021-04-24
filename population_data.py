@@ -142,7 +142,3 @@ def population_predictions():
                    font=dict(color='black', size=11))
     )])
     table.write_html("./tables/population_predictions.html", include_plotlyjs='cdn')
-
-if __name__ == '__main__':
-    current_populations()
-    population_predictions()
