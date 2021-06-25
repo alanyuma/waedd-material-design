@@ -142,9 +142,8 @@ class BlsData():
         with open(f"{file_name.split('.')[0]}.json", 'w') as json_out:
             json.dump(self.raw_data, json_out, indent=4)
 
-    def create_graph(self, title:str, graph_type:str, clean_names:bool=True,
-            custom_column_names:dict=None, transpose:bool=False,
-            short_location_names:bool=True, graph_labels:dict=None) -> pd.DataFrame.plot:
+    def create_graph(self, title:str, graph_type:str, custom_column_names:dict=None,
+            transpose:bool=False, short_location_names:bool=True, graph_labels:dict=None) -> pd.DataFrame.plot:
         """
         Returns a graph-able plotly object from the given data and constructed
         dataframe. Renames columns based on the mapping of seriesIDs to locations
@@ -152,7 +151,6 @@ class BlsData():
         Arguments:
             - title = str; graph title
             - graph_type = str;
-            - clean_names = bool; replace seriesIDs in df columns with location name
             - custom_column_names = dict; mapping of seriesID to custom defined column names
             - transpose = bool; transpose df to graph correctly
             - short_location_names = bool; removes the state from the coumn names to shorten the length
@@ -165,7 +163,7 @@ class BlsData():
             raise ValueError(f"Invalid graph type. Expected one of: {', '.join(accepted_graphs)}")
 
         #create cleaned df to use to plot data
-        plotting_df = self.clean_df(clean_names, custom_column_names, short_location_names)
+        plotting_df = self.clean_df(custom_column_names, short_location_names)
 
         #transpose df, typically if length is 1
         if transpose:
@@ -182,14 +180,13 @@ class BlsData():
                       labels=graph_labels if graph_labels else {},
                       title=title)
 
-    def create_table(self, clean_names:bool=True, custom_column_names:dict=None,
+    def create_table(self, custom_column_names:dict=None,
             short_location_names:bool=True, index_color:str=None,
             descending:bool=False, index_label:str='') -> go.Figure:
         """
         Creates an html table from the dataframe with cleaned columns.
         Returns graph_object.Figure object.
         Arguments:
-            - clean_names = bool; replaces column names with locations or custom names
             - custom_column_names = dict; mapping of series ID to custom column name
             - short_location_names = bool; removes the state from the coumn names to shorten the length
             - index_color = str; the color to apply to the index column and header row.
@@ -197,7 +194,7 @@ class BlsData():
             - index_label = str; adds a custom index label to the index column in a table. Default=''
         """
         #clean dataframe
-        table_df = self.clean_df(clean_names, custom_column_names, short_location_names)
+        table_df = self.clean_df(custom_column_names, short_location_names)
 
         #DF is sorted by ascending by default, change sort to descnding if ascending is false
         if descending:
@@ -225,13 +222,12 @@ class BlsData():
                    font=dict(color='black', size=11))
         )])
 
-    def clean_df(self, clean_names:bool=True, custom_column_names:dict=None,
+    def clean_df(self, custom_column_names:dict=None,
             short_location_names:bool=True) -> pd.DataFrame:
         """
         Cleans the standard dataframe up by renaming columns with locations, or applying
         the custom column names.
         Arguments:
-            - clean_names = bool; replaces column names with locations or custom names
             - custom_column_names = dict; mapping of series ID to custom column name
             - short_location_names = bool; removes the state from the coumn names to shorten the length
         """
@@ -239,15 +235,12 @@ class BlsData():
         table_df = self.df
 
         #replace column names with location names
-        if clean_names and not custom_column_names:
-            cols = {ser_id: re.split('--|,', loc)[0] for ser_id,loc in self.locations.items()} if short_location_names else self.locations
-            table_df = table_df.rename(columns=cols, errors="raise")
-
-        #replace column names with a custom name
-        if clean_names and custom_column_names:
+        cols = {ser_id: re.split('--|,', loc)[0] for ser_id,loc in self.locations.items()} if short_location_names else self.locations
+        if custom_column_names:
             if not isinstance(custom_column_names, dict):
                 raise TypeError("Custom column names must be of type dict.")
-            table_df = table_df.rename(columns=custom_column_names, errors="raise")
+            cols.update(custom_column_names)
+        table_df = table_df.rename(columns=cols, errors="raise")
 
         return table_df
 
