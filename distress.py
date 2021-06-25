@@ -86,14 +86,17 @@ if __name__ == '__main__':
         ["LAUST040000000000003", "LAUCN040120000000003", "LAUCN040270000000003", "LAUCN040150000000003", "LNU04000000"],
         (datetime.date.today() - relativedelta(years=3)).year,
         datetime.date.today().year,
-    ).clean_df(custom_column_names={"LNU04000000": "United States"})
+    )
+    bls_unemployment_df = bls_unemployment.clean_df(custom_column_names={"LNU04000000": "United States"})
 
     # remove NaN entries for lines with national data and not state data (usually most recent month)
-    bls_unemployment = bls_unemployment.dropna()
+    bls_unemployment_df = bls_unemployment_df.dropna()
 
     # remove entries outside of 24 previous months
-    bls_unemployment = (
-        bls_unemployment[~(pd.to_datetime(bls_unemployment.index) < pd.to_datetime(bls_unemployment.iloc[-1].name) - pd.DateOffset(months=24))]
+    bls_unemployment_df = (
+        bls_unemployment_df[~(
+            pd.to_datetime(bls_unemployment_df.index) < pd.to_datetime(bls_unemployment_df.iloc[-1].name) -
+            pd.DateOffset(months=24))]
     )
 
     # gather Census ACS data
@@ -108,13 +111,22 @@ if __name__ == '__main__':
     bea_data = bea_data.rename(columns=lambda x: re.sub(',.*', ' County', x))
     bea_data.iloc[0] = bea_data.replace(',','',regex=True)
 
+    #make graph
+    bls_graph = bls_unemployment.create_graph('24 month Unemployment Data (BLS)',
+                                   graph_type='line',
+                                   graph_labels={"date":"Date", "value": "Percent Unemployed"},
+                                   custom_column_names={"LNU04000000": "United States"})
+    bls_graph.update_traces(mode='markers+lines', hovertemplate='%{y}%')
+    bls_graph.update_layout(hovermode='x')
+    bls_graph.write_html("./graphs/region_distress_unemployment.html", include_plotlyjs='cdn')
+
     #make a dataframe from the combined averages for all counties in the region
     combined_data = {
-        'Region' : [round(bls_unemployment[['La Paz County', 'Mohave County', 'Yuma County']].mean().mean(), 2),
+        'Region' : [round(bls_unemployment_df[['La Paz County', 'Mohave County', 'Yuma County']].mean().mean(), 2),
                     round(census_data.loc[:'DP03_0088E', 'Yuma County':'Mohave County'].mean().mean(), 2),
                     round(bea_data[['La Paz County', 'Mohave County', 'Yuma County']].mean().mean(), 2)],
-        'Arizona' : [round(bls_unemployment['Arizona'].mean(), 2), census_data.loc['DP03_0088E']['Arizona'], bea_data['Arizona'][0]],
-        'United States' : [round(bls_unemployment['United States'].mean(), 2),
+        'Arizona' : [round(bls_unemployment_df['Arizona'].mean(), 2), census_data.loc['DP03_0088E']['Arizona'], bea_data['Arizona'][0]],
+        'United States' : [round(bls_unemployment_df['United States'].mean(), 2),
                             census_data.loc['DP03_0088E']['United States'],
                             bea_data['United States'][0]],
     }
@@ -129,9 +141,9 @@ if __name__ == '__main__':
 
         # gather data
         county_data = {
-            region : [round(bls_unemployment[region].mean(), 2), census_data.loc['DP03_0088E'][region], bea_data[region][0]],
-            'Arizona' : [round(bls_unemployment['Arizona'].mean(), 2), census_data.loc['DP03_0088E']['Arizona'], bea_data['Arizona'][0]],
-            'United States' : [round(bls_unemployment['United States'].mean(), 2),
+            region : [round(bls_unemployment_df[region].mean(), 2), census_data.loc['DP03_0088E'][region], bea_data[region][0]],
+            'Arizona' : [round(bls_unemployment_df['Arizona'].mean(), 2), census_data.loc['DP03_0088E']['Arizona'], bea_data['Arizona'][0]],
+            'United States' : [round(bls_unemployment_df['United States'].mean(), 2),
                                 census_data.loc['DP03_0088E']['United States'],
                                 bea_data['United States'][0]],
         }
