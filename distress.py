@@ -6,6 +6,7 @@ By: Aaron Finocchiaro
 import datetime
 import re
 import pandas as pd
+import chart_studio.plotly as py
 import plotly.graph_objects as go
 from dateutil.relativedelta import relativedelta
 from pyBea.bea_data import regionalData
@@ -53,13 +54,16 @@ def distress_table(df:pd.DataFrame) -> go.Figure:
     #create table
     col_vals = [df[col].to_list() for col in df]
     return go.Figure(data=[go.Table(
+        columnwidth=[80,50],
         header=dict(values=["Criteria"] + df.columns.to_list(),
                     line_color="black",
                     fill_color="orange",
-                    font=dict(color='black', size=12)),
+                    font=dict(color='black', size=12),
+                    align='left'),
         cells=dict(values=[df.index.to_list()] + col_vals,
                    line_color="black",
-                   fill_color=fill_colors)
+                   fill_color=fill_colors,
+                   align='left'),
     )])
 
 def make_df(data:dict) -> pd.DataFrame:
@@ -117,8 +121,9 @@ if __name__ == '__main__':
                                    graph_labels={"date":"Date", "value": "Percent Unemployed"},
                                    custom_column_names={"LNU04000000": "United States"})
     bls_graph.update_traces(mode='markers+lines', hovertemplate='%{y}%')
-    bls_graph.update_layout(hovermode='x')
+    bls_graph.update_layout(hovermode='x', dragmode=False, legend=dict(title={'text':""},yanchor="top", y=1.02, xanchor='left', x=1, font=dict(size=8)))
     bls_graph.write_html("./graphs/region_distress_unemployment.html", include_plotlyjs='cdn')
+    py.plot(bls_graph, filename='region_distress_unemployment', auto_open=False)
 
     #make a dataframe from the combined averages for all counties in the region
     combined_data = {
@@ -134,7 +139,10 @@ if __name__ == '__main__':
 
     #make the region distress table from the dataframe and write to html doc
     combined_table = distress_table(combined_region_df)
+    combined_table.update_layout(height=275, margin=dict(l=0,r=0,t=0,b=0))
     combined_table.write_html("./tables/region_combined_distress.html", include_plotlyjs='cdn')
+    py.plot(combined_table, filename="region_distress", auto_open=False)
+
 
     # make county-based tables
     for region in ['La Paz County', 'Mohave County', 'Yuma County']:
@@ -153,4 +161,6 @@ if __name__ == '__main__':
 
         #create table and write to html doc
         table = distress_table(county_df)
+        table.update_layout(height=275, margin=dict(l=0,r=0,t=0,b=0))
         table.write_html(f"./tables/{'_'.join(region.lower().split()[:-1])}_distress.html", include_plotlyjs='cdn')
+        py.plot(table, filename=f"{'_'.join(region.lower().split()[:-1])}_distress", auto_open=False)

@@ -118,6 +118,8 @@ Arguments:
 - index_color = str; the color to apply to the index column and header row. Default=`None`
 - descending = bool; changes indexes to sort on descending if True. Default=`False`
 - index_label = str; adds a custom index label to the index column in a table. Default=''
+- lines = str: colors the borders between cells with a specified color.
+- align = str: aligns the text inside of cells in either right, left, or center. Default=None
 Returns plotly.graph_object.Figure() object.
 
 ```python
@@ -130,7 +132,9 @@ my_bls_data = BlsData(
 fig = my_bls_data.create_table(
     custom_column_names = {'ENUUS00040010' : 'Entire US', 'ENU0400040010' : 'Arizona'},
     index_color='orange',
-    descending=True)
+    descending=True,
+    line_color='black',
+    align='left')
 
 fig.show()
 ```
