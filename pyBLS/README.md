@@ -88,7 +88,6 @@ Returns a graph-able plotly object from the given data and constructed dataframe
 Arguments:
 - title = str; graph title
 - graph_type = str; the style of graph to be used **(only accepts `line` and `bar`)**
-- clean_names = bool; replace seriesIDs in df columns with location name. Default=`True`
 - custom_column_names = dict; mapping of seriesID to custom defined column names. Default=`None`
 - transpose = bool; transpose df to graph correctly. Default=False
 - short_location_names = bool; removes the state from the coumn names to shorten the length. Default=`True`
@@ -114,12 +113,13 @@ fig.show()
 
 Creates an html table from the dataframe with cleaned columns.
 Arguments:
-- clean_names = bool; replaces column names with locations or custom names. Default=`True`
 - custom_column_names = dict; mapping of series ID to custom column name. Default=`None`
 - short_location_names = bool; removes the state from the coumn names to shorten the length. Default=`True`
 - index_color = str; the color to apply to the index column and header row. Default=`None`
 - descending = bool; changes indexes to sort on descending if True. Default=`False`
 - index_label = str; adds a custom index label to the index column in a table. Default=''
+- lines = str: colors the borders between cells with a specified color.
+- align = str: aligns the text inside of cells in either right, left, or center. Default=None
 Returns plotly.graph_object.Figure() object.
 
 ```python
@@ -132,7 +132,9 @@ my_bls_data = BlsData(
 fig = my_bls_data.create_table(
     custom_column_names = {'ENUUS00040010' : 'Entire US', 'ENU0400040010' : 'Arizona'},
     index_color='orange',
-    descending=True)
+    descending=True,
+    line_color='black',
+    align='left')
 
 fig.show()
 ```
@@ -141,6 +143,5 @@ fig.show()
 
 Cleans the standard dataframe up by renaming columns with locations, or applying the custom column names.
 Arguments:
-- clean_names = bool; replaces column names with locations or custom names. Default=`True`
 - custom_column_names = dict; mapping of series ID to custom column name. `Default`=`None`
 - short_location_names = bool; removes the state from the coumn names to shorten the length. Default=`True`

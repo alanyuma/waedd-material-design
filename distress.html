@@ -1,139 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Regional Economic Distress</title>
-<meta charset="utf-8">
-<meta content="IE=edge"
-  http-equiv="X-UA-Compatible">
-<meta content="We use StatsAmerica data tools to benchmark economic distress and quickly calculate whether our region may meet grant thresholds for unemployment and income."
-  name="description">
-<meta content="Alan Pruitt, @westernazedd"
-  name="author">
-<meta content="Western Arizona Economic Development District, Inc."
-  name="copyright">
-<meta content="index,follow"
-  name="robots">
-<meta content="https://www.waedd.org/distress.html"
-  name="url">
-<meta content="G-VB90GJLZ0J"
-  name="google-analytics">
-<meta content="Global"
-  name="distribution">
-<link href="img/favicon/waedd-favicon.png"
-  rel="icon"
-  type="img/favicon">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="apple-touch-icon" sizes="60x60" href="img/touch-icons/apple-touch-icon-ipad-76x76.png">
 
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-orange.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/waedd.css">
-<style> 
-body {font-family: "Roboto", sans-serif}
-.w3-bar-block .w3-bar-item {
-  padding: 16px;
-  font-weight: bold;
-}
-</style>
+<head>
+    <title>Regional Economic Distress</title>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="We use StatsAmerica data tools to benchmark economic distress and quickly calculate whether our region may meet grant thresholds for unemployment and income." name="description">
+    <meta content="Alan Pruitt, @westernazedd" name="author">
+    <meta content="Western Arizona Economic Development District, Inc." name="copyright">
+    <meta content="index,follow" name="robots">
+    <meta content="https://www.waedd.org/distress.html" name="url">
+    <meta content="G-VB90GJLZ0J" name="google-analytics">
+    <meta content="Global" name="distribution">
+    <link href="img/favicon/waedd-favicon.png" rel="icon" type="img/favicon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/touch-icons/apple-touch-icon-ipad-76x76.png">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-orange.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/waedd.css">
+    <style>
+        body {
+            font-family: "Roboto", sans-serif
+        }
+        
+        .w3-bar-block .w3-bar-item {
+            padding: 16px;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
-  <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-    <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="/img/webp/waedd-logo.webp" alt="western arizona economic develoment district logo" style="width:80%;"></a>
-    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-    <a class="w3-bar-item w3-button w3-orange" href="index.html">Home</a>
-    <a class="w3-bar-item w3-button" href="about.html">About</a>
-    <a class="w3-bar-item w3-button" href="board.html">Board</a>
-    <a class="w3-bar-item w3-button" href="ceds.html">CEDS</a>
-    <a class="w3-bar-item w3-button" href="contact.html">Contact</a>
-    <a class="w3-bar-item w3-button" href="distress.html">Distress</a>
-    <a class="w3-bar-item w3-button" href="files.html">Files</a>
-    <a class="w3-bar-item w3-button" href="meetings.html">Meetings</a>
-    <a class="w3-bar-item w3-button" href="partners.html">Partners</a>
-    <a class="w3-bar-item w3-button" href="projects.html">Projects</a>
-    <a class="w3-bar-item w3-button" href="sitemap.html">Sitemap</a>
-    <a class="w3-bar-item w3-button" href="twitter.html">Twitter</a>
-  </nav>
-  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-  
-  <div class="w3-main" style="margin-left:250px;">
-  
-  <div id="myTop" class="w3-container w3-top w3-theme w3-large">
-    <p><i class="fa fa-bars w3-button w3-orange w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-    <span id="myIntro" class="w3-hide">Economic Distress Information</span></p>
-  </div>
-  <header class="w3-container w3-theme" style="padding:64px 32px">
-    <h1 class="w3-xxlarge">Western Arizona Economic Development District</h1>
-  </header>
-  <div class="w3-container" style="padding:32px">
-    <h2>Regional Economic Distress Criteria <small>Report Date: 9/13/2020</small></h2>
-    <p>
-      <a href="https://twitter.com/statsamerica" target="_blank" rel="noopener">@StatsAmerica</a> uses data tools to benchmark economic distress and quickly calculate whether our region may meet grant thresholds for unemployment and income.</p>
-    <h6>Reference Date: 07/2020 (All data elements refer to this date or earlier)</h6>
-    <h6>Region Consists of: La Paz Co. AZ, Mohave Co. AZ, & Yuma Co. AZ</h6>
-    <iframe title="western arizona regional economic distress criteria" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTvpkjb3mv0Lh4OiRIQo_7bt1_IBi6G5Pj7EaE_TBfrghy3z6Q4_J5UbUjO0bM7DR59CZ8jYgTJl1OS/pubhtml?widget=true&amp;headers=false" width="725" height="175"></iframe>
-<hr>
-    <h3>La Paz County Economic Distress Criteria <small>Report Date: 9/13/2020</small></h3>
-    <iframe title="la paz county arizona economic distress criteria" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQBsTxNztlvoysz3AEG8ULjt_3eeakJdIT7XPT_nGhsNeaRdSikSnDk1LHbDX-fehkf6xg_D4zVSYqb/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="747" height="175"></iframe>
-<hr>
-  <h3>Mohave County Economic Distress Criteria <small>Report Date: 9/13/2020</small></h3>
-    <iframe title="mohave county arizona economic distress criteria" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQoiI0bI1ZR0HY4Yw5P2RDqizhKRwRu_T9dRZeAey4v9mcWW-GSi9e8xxCwktzPvbgNrhZIcPatV4vE/pubhtml?widget=true&amp;headers=false" width="758" height="175"></iframe>
-<hr>
-  <h3>Yuma County Economic Distress Criteria <small>Report Date: 9/13/2020</small></h3>
-    <iframe title="yuma county arizona economic distress criteria" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ30zm67Kv31UBiabvFkgpAcO7lnW8eRHETVKt1VWHcyBp-cKphp1_Am0HLBPECGhI6MULvZPaxNLeF/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="739" height="175"></iframe>
-    <h6>
-        <strong>Sources: U.S. Bureaus of Census, Labor Statistics, and Economic Analysis; Calculations generated by StatsAmerica.</strong>
-    </h6>
-<hr>
-<h6>Footnote:</h6>
-    <p>
-        Economic development districts are designated in regions where the 24-month unemployment rate or the per capita income is less than 80% of the national average (i.e., the <em>threshold calculation</em>).
-    </p>
-    <p>
-        <strong><em>Thus, the District has the paradoxical mission of working itself out of a job by leveraging regional, state, and national partnerships to grow the number and diversity of employers who can create and grow quality jobs. We are not there yet, but with your help, we can get there!</em></strong>
-</p>
-</div>
-<footer class="w3-container w3-theme" style="padding:32px">
-  <q>We build connections with the people and communities in La Paz, Mohave, and Yuma counties.</q>
-</footer>
-<script>
-  // Open and close the sidebar on medium and small screens
-  function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-  }
-  
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-  }
-  
-  // Change style of top container on scroll
-  window.onscroll = function() {myFunction()};
-  function myFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-      document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
-      document.getElementById("myIntro").classList.add("w3-show-inline-block");
-    } else {
-      document.getElementById("myIntro").classList.remove("w3-show-inline-block");
-      document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
-    }
-  }
-  
-  // Accordions
-  function myAccordion(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-      x.className += " w3-show";
-      x.previousElementSibling.className += " w3-theme";
-    } else { 
-      x.className = x.className.replace("w3-show", "");
-      x.previousElementSibling.className = 
-      x.previousElementSibling.className.replace(" w3-theme", "");
-    }
-  }
-  </script>
-</div> 
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+        <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="/img/webp/waedd-logo.webp" alt="western arizona economic develoment district logo" style="width:80%;"></a>
+        <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+        <a class="w3-bar-item w3-button w3-orange" href="index.html">Home</a>
+        <a class="w3-bar-item w3-button" href="about.html">About</a>
+        <a class="w3-bar-item w3-button" href="board.html">Board</a>
+        <a class="w3-bar-item w3-button" href="ceds.html">CEDS</a>
+        <a class="w3-bar-item w3-button" href="contact.html">Contact</a>
+        <a class="w3-bar-item w3-button" href="distress.html">Distress</a>
+        <a class="w3-bar-item w3-button" href="files.html">Files</a>
+        <a class="w3-bar-item w3-button" href="meetings.html">Meetings</a>
+        <a class="w3-bar-item w3-button" href="partners.html">Partners</a>
+        <a class="w3-bar-item w3-button" href="projects.html">Projects</a>
+        <a class="w3-bar-item w3-button" href="sitemap.html">Sitemap</a>
+        <a class="w3-bar-item w3-button" href="twitter.html">Twitter</a>
+    </nav>
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+    <div class="w3-main" style="margin-left:250px;">
+
+        <div id="myTop" class="w3-container w3-top w3-theme w3-large">
+            <p><i class="fa fa-bars w3-button w3-orange w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+                <span id="myIntro" class="w3-hide">Economic Distress Information</span></p>
+        </div>
+        <header class="w3-container w3-theme" style="padding:64px 32px">
+            <h1 class="w3-xxlarge">Western Arizona Economic Development District</h1>
+        </header>
+        <h2>Regional Economic Distress Criteria <small>Report Date: 9/13/2020</small></h2>
+        <p>
+            <a href="https://twitter.com/statsamerica" target="_blank" rel="noopener">@StatsAmerica</a> uses data tools to benchmark economic distress and quickly calculate whether our region may meet grant thresholds for unemployment and income.</p>
+        <h6>Reference Date: 07/2020 (All data elements refer to this date or earlier)</h6>
+        <h6>Region Consists of: La Paz Co. AZ, Mohave Co. AZ, & Yuma Co. AZ</h6>
+        <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/17.embed"></iframe>
+        <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/51.embed"></iframe>
+        <hr>
+        <h3>La Paz County Economic Distress Criteria <small>Report Date: 9/13/2020</small></h3>
+        <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/22.embed"></iframe>
+        <hr>
+        <h3>Mohave County Economic Distress Criteria <small>Report Date: 9/13/2020</small></h3>
+        <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/24.embed"></iframe>
+        <hr>
+        <h3>Yuma County Economic Distress Criteria <small>Report Date: 9/13/2020</small></h3>
+        <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/26.embed"></iframe>
+        <h6>
+            <strong>Sources: U.S. Bureaus of Census, Labor Statistics, and Economic Analysis; Calculations generated by StatsAmerica.</strong>
+        </h6>
+        <hr>
+        <h6>Footnote:</h6>
+        <p>
+            Economic development districts are designated in regions where the 24-month unemployment rate or the per capita income is less than 80% of the national average (i.e., the <em>threshold calculation</em>).
+        </p>
+        <p>
+            <strong><em>Thus, the District has the paradoxical mission of working itself out of a job by leveraging regional, state, and national partnerships to grow the number and diversity of employers who can create and grow quality jobs. We are not there yet, but with your help, we can get there!</em></strong>
+        </p>
+        <footer class="w3-container w3-theme" style="padding:32px">
+            <q>We build connections with the people and communities in La Paz, Mohave, and Yuma counties.</q>
+        </footer>
+        <script>
+            // Open and close the sidebar on medium and small screens
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+                document.getElementById("myOverlay").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("myOverlay").style.display = "none";
+            }
+
+            // Change style of top container on scroll
+            window.onscroll = function() {
+                myFunction()
+            };
+
+            function myFunction() {
+                if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                    document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+                    document.getElementById("myIntro").classList.add("w3-show-inline-block");
+                } else {
+                    document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+                    document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+                }
+            }
+
+            // Accordions
+            function myAccordion(id) {
+                var x = document.getElementById(id);
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                    x.previousElementSibling.className += " w3-theme";
+                } else {
+                    x.className = x.className.replace("w3-show", "");
+                    x.previousElementSibling.className =
+                        x.previousElementSibling.className.replace(" w3-theme", "");
+                }
+            }
+        </script>
+    </div>
 </body>
+
 </html>
