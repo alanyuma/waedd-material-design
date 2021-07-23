@@ -116,7 +116,7 @@ class acsData():
 
         input args:
             - none
-        
+
         returns list
         """
         if '_' in self.group:
@@ -149,7 +149,7 @@ class acsData():
 
         Input arguments:
             - none
-        
+
         returns pandas dataframe
         """
         variables_page_html = requests.get(f"{BASE_URL}{self.year}/acs/acs{self.survey}/profile/groups/{self.group.split('_')[0]}.html")

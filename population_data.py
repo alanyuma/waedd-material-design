@@ -8,6 +8,7 @@ for use with the WAEDD website.
 import os
 import re
 import urllib.request
+import chart_studio.plotly as py
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -83,14 +84,19 @@ def current_populations():
     table = go.Figure(data=[go.Table(
         header=dict(values=['Region', graphing_df.columns],
                     fill_color='orange',
+                    line_color="black",
+                    font=dict(color='black', size=12),
                     align='left'),
         cells=dict(values=[graphing_df.index, graphing_df.values],
                    fill_color = fill_color,
+                   line_color="black",
                    align='left')
     )])
 
     fig.write_html("./graphs/current_population_pie.html", include_plotlyjs='cdn')
     table.write_html("./tables/current_population.html", include_plotlyjs='cdn')
+    py.plot(fig, filename='current_population_pie', auto_open=False)
+    py.plot(table, filename='current_population', auto_open=False)
 
 def population_predictions():
     """
@@ -125,6 +131,7 @@ def population_predictions():
         fig.update_traces(mode='markers+lines', hovertemplate='Pop=%{y}')
         fig.update_layout(hovermode='x')
         fig.write_html(f"./graphs/{region.lower().replace(' ','_')}_pop_predictions.html", include_plotlyjs='cdn')
+        py.plot(fig, filename=f"{region.lower().replace(' ','_')}_pop_predictions", auto_open=False)
 
     #data is indexed by date, so data needs to be organized by column in a list
     col_vals = [population_df[col].to_list() for col in population_df[regions]]
@@ -136,9 +143,19 @@ def population_predictions():
     table = go.Figure(data=[go.Table(
         header=dict(values=['Year'] + population_df[regions].columns.to_list(),
                     fill_color='orange',
-                    font=dict(color='black', size=12)),
+                    line_color="black",
+                    font=dict(color='black', size=12),
+                    align='left'),
         cells=dict(values=[population_df.index.to_list()] + col_vals,
                    fill_color = fill_color,
-                   font=dict(color='black', size=11))
+                   line_color="black",
+                   font=dict(color='black', size=11),
+                   align='left')
     )])
+    table.update_layout(height=275, margin=dict(l=0,r=0,t=0,b=0))
     table.write_html("./tables/population_predictions.html", include_plotlyjs='cdn')
+    py.plot(table, filename="population_predictions", auto_open=False)
+
+if __name__ == '__main__':
+    current_populations()
+    population_predictions()

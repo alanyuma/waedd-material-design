@@ -1,246 +1,275 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
-<title>District Socio-Economic Data</title>
-<meta charset="utf-8">
-<meta content="IE=edge"
-  http-equiv="X-UA-Compatible">
-<meta content="Our district socio-economic data information."
-  name="description">
-<meta content="Alan Pruitt, @westernazedd"
-  name="author">
-<meta content="Western Arizona Economic Development District, Inc."
-  name="copyright">
-<meta content="index,follow"
-  name="robots">
-<meta content="https://www.waedd.org/socio-economic-data.html"
-  name="url">
-<meta content="G-VB90GJLZ0J"
-  name="google-analytics">
-<meta content="Global"
-  name="distribution">
-<link href="img/favicon/waedd-favicon.png"
-  rel="icon"
-  type="img/favicon">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="apple-touch-icon" sizes="60x60" href="img/touch-icons/apple-touch-icon-ipad-76x76.png">
-<link rel="stylesheet" type="text/css" href="css/waedd.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-orange.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style> 
-body {font-family: "Roboto", sans-serif}
-.w3-bar-block .w3-bar-item {
-  padding: 16px;
-  font-weight: bold;
-}
-</style>
+    <title>District Socio-Economic Data</title>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="Our district socio-economic data information." name="description">
+    <meta content="Alan Pruitt, @westernazedd" name="author">
+    <meta content="Western Arizona Economic Development District, Inc." name="copyright">
+    <meta content="index,follow" name="robots">
+    <meta content="https://www.waedd.org/socio-economic-data.html" name="url">
+    <meta content="G-VB90GJLZ0J" name="google-analytics">
+    <meta content="Global" name="distribution">
+    <link href="img/favicon/waedd-favicon.png" rel="icon" type="img/favicon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/touch-icons/apple-touch-icon-ipad-76x76.png">
+    <link rel="stylesheet" type="text/css" href="css/waedd.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-orange.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: "Roboto", sans-serif
+        }
+        
+        .w3-bar-block .w3-bar-item {
+            padding: 16px;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
-  <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
-    <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="/img/webp/waedd-logo.webp" alt="western arizona economic develoment district logo" style="width:80%;"></a>
-    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
-    <a class="w3-bar-item w3-button w3-orange" href="index.html">Home</a>
-    <a class="w3-bar-item w3-button" href="about.html">About</a>
-    <a class="w3-bar-item w3-button" href="board.html">Board</a>
-    <a class="w3-bar-item w3-button" href="ceds.html">CEDS</a>
-    <a class="w3-bar-item w3-button" href="contact.html">Contact</a>
-    <a class="w3-bar-item w3-button" href="distress.html">Distress</a>
-    <a class="w3-bar-item w3-button" href="files.html">Files</a>
-    <a class="w3-bar-item w3-button" href="meetings.html">Meetings</a>
-    <a class="w3-bar-item w3-button" href="partners.html">Partners</a>
-    <a class="w3-bar-item w3-button" href="projects.html">Projects</a>
-    <a class="w3-bar-item w3-button" href="sitemap.html">Sitemap</a>
-    <a class="w3-bar-item w3-button" href="twitter.html">Twitter</a>
-</nav>
-  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
-  <div class="w3-main" style="margin-left:250px;">
-  <div id="myTop" class="w3-container w3-top w3-theme w3-large">
-    <p><i class="fa fa-bars w3-button w3-orange w3-hide-large w3-xlarge" onclick="w3_open()"></i>
-    <span id="myIntro" class="w3-hide">CEDS | Socio-Economic Data</span></p>
-  </div>
-  <header class="w3-container w3-theme" style="padding:64px 32px">
-    <h1 class="w3-xxlarge">Western Arizona Economic Development District</h1>
-  </header>
-  <div class="w3-container" style="padding:32px">
-    <h2>3.0 Socio-Economic Data</h2>
-    <h3 id="c31">3.1 Regional Economic Distress Criteria</h3>
-    <p>
-      Economic development districts are designated in regions where the 24-month unemployment rate or the per capita income is less than 80% of the national average. 
-    </p>
-    <p>
-      StatsAmerica uses data tools to benchmark economic distress and quickly calculate whether our region may meet grant thresholds for unemployment and income.
-    </p>
-    <p>
-      <a href="distress.html">Click to view</a> our latest regional economic distress criteria information.
-    </p> 
-    <h6><a href="ceds.html">Return to CEDS</a></h6>
-<hr>
-    <h3 id="c32">3.2 Population</h3>
-    <p>
-      The American Community Survey (ACS) is an ongoing statistical survey by the U.S. Census Bureau. It regularly gathers information previously contained only in the long form of the decennial census, such as ancestry, educational attainment, income, language proficiency, migration, disability, employment, and housing characteristics. 
-    </p>
-    <p>
-      These data are used by many public-sector, private-sector, and not-for-profit stakeholders to allocate funding, track shifting demographics, plan for emergencies, and learn about local communities. Sent to approximately 295,000 addresses monthly (or 3.5 million per year), it is the most extensive survey after the decennial census that the Census Bureau administers.</p>
-    <p>
-      The US Census Bureau American QuickFacts provides statistics for all states and counties, and for cities and towns with a population of 5,000 or more. 
-    </p>
-    <h5>Population Data (not sessonally adjusted)</h5>
-    <iframe title="current population plotly" src="./graphs/current_population_pie.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
-    <iframe src="./tables/current_population.html" frameborder="0" width="500" height="350" seamless="seamless"></iframe>
-    <footer>
-        Source: <a target='_blank' href='https://www.azcommerce.com/oeo/population/population-estimates/'>Arizona Commerce Authority</a>
-    </footer>
-    <h6><a href="ceds.html">Return to CEDS</a></h6>
-<div class="w3-container" style="padding:32px"></div>
-          <h6>About this next table:</h6>
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+        <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="/img/webp/waedd-logo.webp" alt="western arizona economic develoment district logo" style="width:80%;"></a>
+        <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+        <a class="w3-bar-item w3-button w3-orange" href="index.html">Home</a>
+        <a class="w3-bar-item w3-button" href="about.html">About</a>
+        <a class="w3-bar-item w3-button" href="board.html">Board</a>
+        <a class="w3-bar-item w3-button" href="ceds.html">CEDS</a>
+        <a class="w3-bar-item w3-button" href="contact.html">Contact</a>
+        <a class="w3-bar-item w3-button" href="distress.html">Distress</a>
+        <a class="w3-bar-item w3-button" href="files.html">Files</a>
+        <a class="w3-bar-item w3-button" href="meetings.html">Meetings</a>
+        <a class="w3-bar-item w3-button" href="partners.html">Partners</a>
+        <a class="w3-bar-item w3-button" href="projects.html">Projects</a>
+        <a class="w3-bar-item w3-button" href="sitemap.html">Sitemap</a>
+        <a class="w3-bar-item w3-button" href="twitter.html">Twitter</a>
+    </nav>
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+    <div class="w3-main" style="margin-left:250px;">
+        <div id="myTop" class="w3-container w3-top w3-theme w3-large">
+            <p><i class="fa fa-bars w3-button w3-orange w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+                <span id="myIntro" class="w3-hide">CEDS | Socio-Economic Data</span></p>
+        </div>
+        <header class="w3-container w3-theme" style="padding:64px 32px">
+            <h1 class="w3-xxlarge">Western Arizona Economic Development District</h1>
+        </header>
+        <div class="w3-container" style="padding:32px">
+            <h2>3.0 Socio-Economic Data</h2>
+            <h3 id="c31">3.1 Regional Economic Distress Criteria</h3>
+            <p>
+                Economic development districts are designated in regions where the 24-month unemployment rate or the per capita income is less than 80% of the national average.
+            </p>
+            <p>
+                StatsAmerica uses data tools to benchmark economic distress and quickly calculate whether our region may meet grant thresholds for unemployment and income.
+            </p>
+            <p>
+                <a href="distress.html">Click to view</a> our latest regional economic distress criteria information.
+            </p>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h3 id="c32">3.2 Population</h3>
+            <p>
+                The American Community Survey (ACS) is an ongoing statistical survey by the U.S. Census Bureau. It regularly gathers information previously contained only in the long form of the decennial census, such as ancestry, educational attainment, income, language
+                proficiency, migration, disability, employment, and housing characteristics.
+            </p>
+            <p>
+                These data are used by many public-sector, private-sector, and not-for-profit stakeholders to allocate funding, track shifting demographics, plan for emergencies, and learn about local communities. Sent to approximately 295,000 addresses monthly (or 3.5
+                million per year), it is the most extensive survey after the decennial census that the Census Bureau administers.</p>
+            <p>
+                The US Census Bureau American QuickFacts provides statistics for all states and counties, and for cities and towns with a population of 5,000 or more.
+            </p>
+            <h5>Population Data (not sessonally adjusted)</h5>
+            <!-- <iframe title="current population plotly" src="./graphs/current_population_pie.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+            <iframe src="./tables/current_population.html" frameborder="0" width="500" height="350" seamless="seamless"></iframe> -->
+            <iframe class="small_graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/220.embed"></iframe>
+            <iframe class="small_table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/222.embed"></iframe>
+            <footer>
+                Source: <a target='_blank' href='https://www.azcommerce.com/oeo/population/population-estimates/'>Arizona Commerce Authority</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <div class="w3-container" style="padding:32px"></div>
+            <h6>About this next table:</h6>
             <p>
                 Arizona population projections are made for July 1st of each year in the projection period. In addition to the baseline projections (the medium series), a low series and a high series were also produced using alternative assumption.
             </p>
-  <h5>2018-2055 Arizona State and County Population Projections</h5> 
-  <iframe title="az population predictions plotly" src="./graphs/Arizona_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
-  <iframe title="la paz population predictions plotly" src="./graphs/la_paz_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
-  <iframe title="mohave population predictions plotly" src="./graphs/mohave_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
-  <iframe title="yuma population predictions plotly" src="./graphs/yuma_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
-  <iframe src="./tables/population_predictions.html" width="1000" height="400" frameborder="0" scrolling="no"></iframe>
-  <footer>
-      Source: <a target='_blank' href='https://www.azcommerce.com/oeo/population/population-projections/'>Arizona Commerce Authority</a>
-  </footer> 
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h3 id="c33">3.3 Employment & Wage Information</h3>
-  <iframe title="mean weekly wage plotly" src="./graphs/mean_weekly_wage.html" width="700" height="600" frameborder="0" scrolling="no"></iframe>
-  <footer>
-    Source: <a target='_blank' href='https://www.bls.gov/cew/about-data/data-files-guide.htm'>Bureau of Labor Statistics Quarterly Census of Employment and Wages</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h5>Average Weekly Wages by county in Arizona</h5>
-  <iframe src="./graphs/ceds3_3_avg_weekly_wages.html" width="1200" height="600" frameborder="0" scrolling="no"></iframe>
-  <iframe src="./tables/ceds3_3_avg_weekly_wages.html" width="1200" height="400" frameborder="0"></iframe>
-  <footer>
-    Source: <a target='_blank' href='https://www.bls.gov/oes/#tables'>Bureau of Labor Statistics Employment and Wages from Occupational Employment Statistics (OES) survey</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h3 id="c34">3.4 Unemployment Summary by County</h3>
-  <h5>All County Unemployment Rates</h5>
-  <iframe src="./graphs/ceds3_4_unemployment_rate.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
-  <iframe src="./tables/ceds3_4_unemployment_rate.html" width="800" height="400" frameborder="0"></iframe>
-  <footer>
-    Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <h5>La Paz County - Monthly Summary</h5>
-  <iframe src="./graphs/ceds3_4_la_paz_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
-  <iframe src="./tables/ceds3_4_la_paz_employment.html" width="800" height="400" frameborder="0"></iframe>
-  <footer>
-    Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h5>Mohave County - Monthly Summary</h5>
-  <iframe src="./graphs/ceds3_4_mohave_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
-  <iframe src="./tables/ceds3_4_mohave_employment.html" width="800" height="400" frameborder="0"></iframe>
-  <footer>
-    Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h5>Yuma County - Monthly Summary</h5>
-  <iframe src="./graphs/ceds3_4_yuma_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
-  <iframe src="./tables/ceds3_4_yuma_employment.html" width="800" height="400" frameborder="0"></iframe>
-  <footer>
-    Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h5>Lake Havasu City & Kingman MSA - Monthly Summary</h5>
-  <iframe src="./graphs/ceds3_4_lake_havasu_kingman_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
-  <iframe src="./tables/ceds3_4_lake_havasu_kingman_employment.html" width="800" height="400" frameborder="0"></iframe>
-  <br>
-  <footer>
-    Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h5>Yuma MSA - Monthly Summary</h5>
-  <iframe src="./graphs/ceds3_4_yuma_msa_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
-  <iframe src="./tables/ceds3_4_yuma_msa_employment.html" width="800" height="400" frameborder="0"></iframe>
-  <br>
-  <footer>
-    Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h3 id="c35">3.5 Side-by-Side Demographics Comparison</h3>
-  <h5>Produced by StatsAmerica | April 2021</h5>
-  <iframe title="ceds side by side demographics comparison" link rel="preload" src="https://docs.google.com/document/d/e/2PACX-1vRE-CPQ5_W83cBOh7F7CI0PXoi7NYiT0EghNvdorkauOvDFyR4u_3Us4e40ef8P3Q/pub?embedded=true" width="710" height="280"></iframe>
-  <br>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <hr>
-  <h3 id="c36">3.6 Profile for La Paz County AZ</h3>
-  <h5>Produced by StatsAmerica | April 2021</h5>
-  <iframe title="socio economic profile for la paz county arizona" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTMzv8bARbsDaC_VCHSnGUACqrMdAyrkvKemtZlbqAEopgbA-Qdbu-2VmOIypM7Mt87P8m2n7cZTDoN/pubhtml?widget=true&amp;headers=false" width="710" height="350"></iframe>
-  <br>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <h3 id="c37">3.7 Profile for Mohave County AZ</h3>
-  <h5>Produced by StatsAmerica | April 2021</h5>
-  <iframe title="socio economic profile for mohave county arizona" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS814AMLMoHcgsEZoajhzig4Rk7-XtmcUijOB3exigXN1f29Rg1It1vaR13xFWdEHJg7y6FZ1DrFx6K/pubhtml?widget=true&amp;headers=false" width="710" height="350"></iframe>
-  <br>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <h3 id="c38">3.8 Profile for Yuma County AZ</h3>
-  <h5>Produced by StatsAmerica | April 2021</h5>
-  <iframe title="socio economic profile for yuma county arizona" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQtvZCz6XFMX7AqrJKxu4nN-da-FLGSk75GtJjOKKLBt5oCAGKbEdAn5O8pi-WqQhADTE-w2df29bpS/pubhtml?widget=true&amp;headers=false" width="710" height="350"></iframe>
-  <br>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-  <footer>
-    Source: <a href="https://www.azeconomy.org/data/yuma-county-2/" target="_blank" rel="noopener">UofA Eller Economic & Business Research Center - Yuma MSA Summary (April 2020)</a>
-  </footer>
-  <h6><a href="ceds.html">Return to CEDS</a></h6>
-<footer class="w3-container w3-theme" style="padding:32px">
-  <q>We build connections with the people and communities in La Paz, Mohave, and Yuma counties.</q>
-</footer>
+            <h5>2018-2055 Arizona State and County Population Projections</h5>
+            <!-- <iframe title="az population predictions plotly" src="./graphs/Arizona_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+            <iframe title="la paz population predictions plotly" src="./graphs/la_paz_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+            <iframe title="mohave population predictions plotly" src="./graphs/mohave_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+            <iframe title="yuma population predictions plotly" src="./graphs/yuma_county_pop_predictions.html" width="500" height="400" frameborder="0" scrolling="no"></iframe> -->
+            <div class="centered-div">
+                <iframe class="small_graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/224.embed"></iframe>
+                <iframe class="small_graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/230.embed"></iframe>
+                <iframe class="small_graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/228.embed"></iframe>
+                <iframe class="small_graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/226.embed"></iframe>
+            </div>
+            <!-- <iframe src="./tables/population_predictions.html" class="table" frameborder="0" scrolling="no"></iframe> -->
+            <iframe class="table" scrolling="no" src="//plotly.com/~afinocchiaro/254.embed"></iframe>
+            <footer>
+                Source: <a target='_blank' href='https://www.azcommerce.com/oeo/population/population-projections/'>Arizona Commerce Authority</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h3 id="c33">3.3 Employment & Wage Information</h3>
+            <!-- <iframe title="mean weekly wage plotly" src="./graphs/mean_weekly_wage.html" width="700" height="600" frameborder="0" scrolling="no"></iframe> -->
+            <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/71.embed"></iframe>
+            <footer>
+                Source: <a target='_blank' href='https://www.bls.gov/cew/about-data/data-files-guide.htm'>Bureau of Labor Statistics Quarterly Census of Employment and Wages</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h5>Average Weekly Wages by county in Arizona</h5>
+            <!-- <iframe src="./graphs/ceds3_3_avg_weekly_wages.html" width="1200" height="600" frameborder="0" scrolling="no"></iframe>
+  <iframe src="./tables/ceds3_3_avg_weekly_wages.html" width="1200" height="400" frameborder="0"></iframe> -->
+            <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/75.embed"></iframe>
+            <iframe class="table" frameborder="0" scrolling="yes" src="//plotly.com/~afinocchiaro/77.embed"></iframe>
+            <footer>
+                Source: <a target='_blank' href='https://www.bls.gov/oes/#tables'>Bureau of Labor Statistics Employment and Wages from Occupational Employment Statistics (OES) survey</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h3 id="c34">3.4 Unemployment Summary by County</h3>
+            <h5>All County Unemployment Rates</h5>
+            <!-- <iframe src="./graphs/ceds3_4_unemployment_rate.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+  <iframe src="./tables/ceds3_4_unemployment_rate.html" width="800" height="400" frameborder="0"></iframe> -->
+            <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/79.embed"></iframe>
+            <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/81.embed"></iframe>
+            <footer>
+                Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h5>La Paz County - Monthly Summary</h5>
+            <!-- <iframe src="./graphs/ceds3_4_la_paz_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+  <iframe src="./tables/ceds3_4_la_paz_employment.html" width="800" height="400" frameborder="0"></iframe> -->
+            <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/83.embed"></iframe>
+            <iframe class="table" frameborder="0" scrolling="yes" src="//plotly.com/~afinocchiaro/85.embed"></iframe>
+            <footer>
+                Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h5>Mohave County - Monthly Summary</h5>
+            <!-- <iframe src="./graphs/ceds3_4_mohave_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+  <iframe src="./tables/ceds3_4_mohave_employment.html" width="800" height="400" frameborder="0"></iframe> -->
+            <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/91.embed"></iframe>
+            <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/93.embed"></iframe>
+            <footer>
+                Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h5>Yuma County - Monthly Summary</h5>
+            <!-- <iframe src="./graphs/ceds3_4_yuma_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+  <iframe src="./tables/ceds3_4_yuma_employment.html" width="800" height="400" frameborder="0"></iframe> -->
+            <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/87.embed"></iframe>
+            <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/89.embed"></iframe>
+            <footer>
+                Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h5>Lake Havasu City & Kingman MSA - Monthly Summary</h5>
+            <!-- <iframe src="./graphs/ceds3_4_lake_havasu_kingman_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+  <iframe src="./tables/ceds3_4_lake_havasu_kingman_employment.html" width="800" height="400" frameborder="0"></iframe> -->
+            <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/95.embed"></iframe>
+            <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/97.embed"></iframe>
+            <br>
+            <footer>
+                Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h5>Yuma MSA - Monthly Summary</h5>
+            <!-- <iframe src="./graphs/ceds3_4_yuma_msa_employment.html" width="600" height="500" frameborder="0" scrolling="no"></iframe>
+  <iframe src="./tables/ceds3_4_yuma_msa_employment.html" width="800" height="400" frameborder="0"></iframe> -->
+            <iframe class="graph" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/99.embed"></iframe>
+            <iframe class="table" frameborder="0" scrolling="no" src="//plotly.com/~afinocchiaro/101.embed"></iframe>
+            <br>
+            <footer>
+                Source: <a target="_blank" href="https://www.bls.gov/lau/#tables">Bureau of Labor Statistics Local Area Unemployment Statistics</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h3 id="c35">3.5 Side-by-Side Demographics Comparison</h3>
+            <h5>Produced by StatsAmerica | April 2021</h5>
+            <iframe title="ceds side by side demographics comparison" link rel="preload" src="https://docs.google.com/document/d/e/2PACX-1vRE-CPQ5_W83cBOh7F7CI0PXoi7NYiT0EghNvdorkauOvDFyR4u_3Us4e40ef8P3Q/pub?embedded=true" width="710" height="280"></iframe>
+            <br>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <hr>
+            <h3 id="c36">3.6 Profile for La Paz County AZ</h3>
+            <h5>Produced by StatsAmerica | April 2021</h5>
+            <iframe title="socio economic profile for la paz county arizona" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTMzv8bARbsDaC_VCHSnGUACqrMdAyrkvKemtZlbqAEopgbA-Qdbu-2VmOIypM7Mt87P8m2n7cZTDoN/pubhtml?widget=true&amp;headers=false"
+                width="710" height="350"></iframe>
+            <br>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <h3 id="c37">3.7 Profile for Mohave County AZ</h3>
+            <h5>Produced by StatsAmerica | April 2021</h5>
+            <iframe title="socio economic profile for mohave county arizona" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS814AMLMoHcgsEZoajhzig4Rk7-XtmcUijOB3exigXN1f29Rg1It1vaR13xFWdEHJg7y6FZ1DrFx6K/pubhtml?widget=true&amp;headers=false"
+                width="710" height="350"></iframe>
+            <br>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <h3 id="c38">3.8 Profile for Yuma County AZ</h3>
+            <h5>Produced by StatsAmerica | April 2021</h5>
+            <iframe title="socio economic profile for yuma county arizona" link rel="preload" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQtvZCz6XFMX7AqrJKxu4nN-da-FLGSk75GtJjOKKLBt5oCAGKbEdAn5O8pi-WqQhADTE-w2df29bpS/pubhtml?widget=true&amp;headers=false"
+                width="710" height="350"></iframe>
+            <br>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <footer>
+                Source: <a href="https://www.azeconomy.org/data/yuma-county-2/" target="_blank" rel="noopener">UofA Eller Economic & Business Research Center - Yuma MSA Summary (April 2020)</a>
+            </footer>
+            <h6><a href="ceds.html">Return to CEDS</a></h6>
+            <footer class="w3-container w3-theme" style="padding:32px">
+                <q>We build connections with the people and communities in La Paz, Mohave, and Yuma counties.</q>
+            </footer>
 
-<script>
-  // Open and close the sidebar on medium and small screens
-  function w3_open() {
-    document.getElementById("mySidebar").style.display = "block";
-    document.getElementById("myOverlay").style.display = "block";
-  }
-  
-  function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("myOverlay").style.display = "none";
-  }
-  
-  // Change style of top container on scroll
-  window.onscroll = function() {myFunction()};
-  function myFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-      document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
-      document.getElementById("myIntro").classList.add("w3-show-inline-block");
-    } else {
-      document.getElementById("myIntro").classList.remove("w3-show-inline-block");
-      document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
-    }
-  }
-  
-  // Accordions
-  function myAccordion(id) {
-    var x = document.getElementById(id);
-    if (x.className.indexOf("w3-show") == -1) {
-      x.className += " w3-show";
-      x.previousElementSibling.className += " w3-theme";
-    } else { 
-      x.className = x.className.replace("w3-show", "");
-      x.previousElementSibling.className = 
-      x.previousElementSibling.className.replace(" w3-theme", "");
-    }
-  }
-  </script>
-</div>
-</div>
+            <script>
+                // Open and close the sidebar on medium and small screens
+                function w3_open() {
+                    document.getElementById("mySidebar").style.display = "block";
+                    document.getElementById("myOverlay").style.display = "block";
+                }
+
+                function w3_close() {
+                    document.getElementById("mySidebar").style.display = "none";
+                    document.getElementById("myOverlay").style.display = "none";
+                }
+
+                // Change style of top container on scroll
+                window.onscroll = function() {
+                    myFunction()
+                };
+
+                function myFunction() {
+                    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                        document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+                        document.getElementById("myIntro").classList.add("w3-show-inline-block");
+                    } else {
+                        document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+                        document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+                    }
+                }
+
+                // Accordions
+                function myAccordion(id) {
+                    var x = document.getElementById(id);
+                    if (x.className.indexOf("w3-show") == -1) {
+                        x.className += " w3-show";
+                        x.previousElementSibling.className += " w3-theme";
+                    } else {
+                        x.className = x.className.replace("w3-show", "");
+                        x.previousElementSibling.className =
+                            x.previousElementSibling.className.replace(" w3-theme", "");
+                    }
+                }
+            </script>
+        </div>
+    </div>
 </body>
+
 </html>

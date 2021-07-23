@@ -1,0 +1,439 @@
+a:link {
+    color: blue;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000;
+    font-family: "Lato", sans-serif;
+    overflow: auto;
+    margin: auto;
+    padding-top: 0;
+    padding-right: 8px;
+    overflow-x: hidden;
+}
+
+
+/* a { text-decoration: none; color: #008CBA; } */
+
+a[href^="https"] {
+    text-decoration: none;
+    text-emphasis-color: blue;
+}
+
+a[href^="https"]::after {
+    content: " (Secure) ";
+    font-size: 8px;
+    color: green;
+}
+
+address {
+    display: block;
+    font-style: italic;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+p {
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    text-align: left;
+    text-align-last: left;
+    margin-top: 8px;
+    margin-right: 0px;
+    margin-bottom: 8px;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    word-spacing: normal;
+    word-wrap: break-word;
+    text-indent: 1em;
+    font-size: 16pt;
+}
+
+caption {
+    font-style: italic;
+    text-align: left;
+}
+
+div.centered-div {
+    text-align: center;
+}
+
+.heading1 {
+    text-align: left;
+    background-color: white;
+    color: blue;
+    font-size: 40px;
+    font-family: "Lato", sans-serif;
+}
+
+.heading2 {
+    text-align: left;
+    background-color: white;
+    color: red;
+    font-size: 35px;
+    font-family: "Lato", sans-serif;
+}
+
+.heading3 {
+    text-align: left;
+    background-color: white;
+    color: green;
+    font-size: 30px;
+    font-family: "Lato", sans-serif;
+}
+
+.heading4 {
+    text-align: left;
+    background-color: white;
+    color: red;
+    font-size: 25px;
+    font-family: "Lato", sans-serif;
+}
+
+.heading5 {
+    text-align: left;
+    background-color: white;
+    color: green;
+    font-size: 20px;
+    font-family: "Lato", sans-serif;
+}
+
+.heading6 {
+    text-align: left;
+    background-color: white;
+    color: blue;
+    font-size: 15px;
+    font-family: "Lato", sans-serif;
+}
+
+
+/* .headshot { display: inline-block; width: 300px; height: 300 px; border: 2px solid-blue; border-radius: 50% background-image; url('img/webp/Alan-Pruitt4800headshot.webp'); background-position: center center; } */
+
+header {
+    overflow: hidden;
+}
+
+header img {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.video-container iframe {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 545px;
+    height: 460px;
+}
+
+iframe {
+    border: 0;
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+}
+
+
+/* #toc_container {
+      background: #f9f9f9 none repeat scroll 0 0;
+      border: 1px solid #aaa;
+      display: table;
+      font-size: 95%;
+      margin-bottom: 1em;
+      padding: 20px;
+      width: auto;
+  } */
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.toc_title {
+    font-weight: 700;
+    text-align: left;
+}
+
+#toc_container li,
+#toc_container ul,
+#toc_container ul li {
+    list-style: outside none none !important;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
+ul.a {
+    list-style-type: circle;
+}
+
+ul.b {
+    list-style-type: square;
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+
+/* desktop width */
+
+@media (max-width: 1194px) {
+    article {
+        width: 1134px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 20px;
+        background-color: white;
+    }
+}
+
+@media print {
+    .nav,
+    .footer,
+    .left-column,
+    .right-column,
+    .picture {
+        display: none;
+    }
+}
+
+
+/* tablet width like iPadPro */
+
+@media (max-width: 1024px) {
+    article {
+        width: 973px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 16px;
+        background-color: white;
+    }
+}
+
+
+/* laptop width */
+
+@media (max-width: 1000px) {
+    article {
+        width: 950px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 16px;
+        background-color: white;
+    }
+}
+
+
+/* tablet width like iPad */
+
+@media (max-width: 768px) {
+    article {
+        width: 730px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 14px;
+        background-color: white;
+    }
+}
+
+
+/* typical phone width*/
+
+@media (max-width: 640px) {
+    article {
+        width: 608px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 10px;
+        background-color: white;
+    }
+}
+
+
+/* average width */
+
+@media (min-width: 575px) {
+    article {
+        width: 550px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        background-color: white;
+    }
+    iframe.graph {
+        width: 85%;
+        height: 650px;
+        margin: auto;
+        display: block;
+    }
+    iframe.small_graph {
+        width: 40%;
+        height: 400px;
+    }
+    iframe.table {
+        width: 570px;
+        height: 275px;
+        margin: auto;
+        display: block;
+    }
+    iframe.small_table {
+        width: 443px;
+        height: 275px;
+    }
+}
+
+@media (max-width: 575px) {
+    iframe.graph,
+    iframe.small_graph {
+        width: 100%;
+        height: 500px;
+    }
+    iframe.table,
+    iframe.small_table {
+        width: 443px;
+        height: 275px;
+        margin: auto;
+        display: block;
+    }
+}
+
+
+/* Pixel3 phone width */
+
+@media (max-width: 443px) {
+    article {
+        width: 421px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 8px;
+        background-color: white;
+    }
+    iframe.graph,
+    iframe.small_graph {
+        width: 100%;
+        height: 500px;
+    }
+    iframe.table,
+    iframe.small_table {
+        width: 100%;
+        height: 275px;
+        margin: auto;
+        display: block;
+    }
+}
+
+
+/* small phone width */
+
+@media (max-width: 425px) {
+    article {
+        width: 404px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 8px;
+        background-color: white;
+    }
+}
+
+
+/* Pixel 2XL screen width  */
+
+@media (max-width: 411px) {
+    article {
+        width: 390px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 8px;
+        background-color: white;
+    }
+}
+
+
+/* iPhone X screen width  */
+
+@media (max-width: 375px) {
+    article {
+        width: 356px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 8px;
+        background-color: white;
+    }
+}
+
+
+/* very small phone width like Moto G4 + Galaxy S5 */
+
+@media (max-width: 360px) {
+    article {
+        width: 342px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 8px;
+        background-color: white;
+    }
+}
+
+
+/* Fonts for page */
+
+.sansserif {
+    font-family: "Lato", sans-serif;
+}
+
+
+/* .serif { font-family: "Times New Roman", Times, serif; } */
+
+.monospace {
+    font-family: "Lucida Console", Courier, monospace;
+}
