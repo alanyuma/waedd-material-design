@@ -27,7 +27,7 @@
 - seriesIDs:
     - OEUN000000000000000000003  #Entire US
     - OEUS040000000000000000003  #AZ entire state
-    - OEUM002942000000000000003  #Lake Havasu City
+    # - OEUM002942000000000000003  #Lake Havasu City
     - OEUM004974000000000000003  #Yuma 
     - OEUM040000100000000000003  #AZ nonmetropolitan area
   start_year: 2020
@@ -44,7 +44,7 @@
     - ENU0400040010  #Arizona
     - ENU0401240010  #La Paz
     - ENU0402740010  #Yuma
-    - ENU0401540010  #Mohave
+    # - ENU0401540010  #Mohave
   start_year: 2015
   end_year: 2021
   filename: 'ceds3_3_avg_weekly_wages'
@@ -62,7 +62,7 @@
     - LAUST040000000000003 #Arizona unemployment rate
     - LAUCN040120000000003 #La Paz County
     - LAUCN040270000000003 #Yuma County
-    - LAUCN040150000000003 #Mohave
+    # - LAUCN040150000000003 #Mohave
   start_year: 2015
   end_year: 2021
   filename: 'ceds3_4_unemployment_rate'
@@ -113,42 +113,42 @@
     "value" : "Value"
 
 #Section 3.4: Mohave County Unemployment
-- seriesIDs:
-    - LAUCN040150000000004 #Mohave County Unemployment
-    - LAUCN040150000000005 #Mohave County Employment
-    - LAUCN040150000000003 #Mohave County unemployment rate
-  start_year: 2019
-  end_year: 2021
-  filename: 'ceds3_4_mohave_employment'
-  graph_name: 'Mohave County Employment'
-  custom_column_names:
-    "LAUCN040150000000004" : "Unemployment"
-    "LAUCN040150000000005" : "Employment"
-    "LAUCN040150000000003" : "Unemployment Rate"
-  graph_type: 'bar'
-  sort_descending: True
-  graph_axis_labels:
-    "date" : "Date"
-    "value" : "Value"
+# - seriesIDs:
+#     - LAUCN040150000000004 #Mohave County Unemployment
+#     - LAUCN040150000000005 #Mohave County Employment
+#     - LAUCN040150000000003 #Mohave County unemployment rate
+#   start_year: 2019
+#   end_year: 2021
+#   filename: 'ceds3_4_mohave_employment'
+#   graph_name: 'Mohave County Employment'
+#   custom_column_names:
+#     "LAUCN040150000000004" : "Unemployment"
+#     "LAUCN040150000000005" : "Employment"
+#     "LAUCN040150000000003" : "Unemployment Rate"
+#   graph_type: 'bar'
+#   sort_descending: True
+#   graph_axis_labels:
+#     "date" : "Date"
+#     "value" : "Value"
 
 #Section 3.4: Lake Havasu City-Kingman, AZ Unemployment
-- seriesIDs:
-    - LAUMT042942000000004 #Lake Havasu City-Kingman Unemployment
-    - LAUMT042942000000005 #Lake Havasu City-Kingman Employment
-    - LAUMT042942000000003 #Lake Havasu City-Kingman unemployment rate
-  start_year: 2019
-  end_year: 2021
-  filename: 'ceds3_4_lake_havasu_kingman_employment'
-  graph_name: 'Lake Havasu City-Kingman Employment'
-  custom_column_names:
-    "LAUMT042942000000004" : "Unemployment"
-    "LAUMT042942000000005" : "Employment"
-    "LAUMT042942000000003" : "Unemployment Rate"
-  graph_type: 'bar'
-  sort_descending: True
-  graph_axis_labels:
-    "date" : "Date"
-    "value" : "Value"
+# - seriesIDs:
+#     - LAUMT042942000000004 #Lake Havasu City-Kingman Unemployment
+#     - LAUMT042942000000005 #Lake Havasu City-Kingman Employment
+#     - LAUMT042942000000003 #Lake Havasu City-Kingman unemployment rate
+#   start_year: 2019
+#   end_year: 2021
+#   filename: 'ceds3_4_lake_havasu_kingman_employment'
+#   graph_name: 'Lake Havasu City-Kingman Employment'
+#   custom_column_names:
+#     "LAUMT042942000000004" : "Unemployment"
+#     "LAUMT042942000000005" : "Employment"
+#     "LAUMT042942000000003" : "Unemployment Rate"
+#   graph_type: 'bar'
+#   sort_descending: True
+#   graph_axis_labels:
+#     "date" : "Date"
+#     "value" : "Value"
 
 #Section 3.4: Yuma, AZ Unemployment
 - seriesIDs:

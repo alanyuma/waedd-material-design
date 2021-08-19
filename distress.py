@@ -6,7 +6,6 @@ By: Aaron Finocchiaro
 import datetime
 import re
 import pandas as pd
-import chart_studio.plotly as py
 import plotly.graph_objects as go
 from dateutil.relativedelta import relativedelta
 from pyBea.bea_data import regionalData
@@ -87,7 +86,7 @@ def make_df(data:dict) -> pd.DataFrame:
 if __name__ == '__main__':
     #gather BLS data for the past 3 years from most recent available month
     bls_unemployment = BlsData(
-        ["LAUST040000000000003", "LAUCN040120000000003", "LAUCN040270000000003", "LAUCN040150000000003", "LNU04000000"],
+        ["LAUST040000000000003", "LAUCN040120000000003", "LAUCN040270000000003", "LNU04000000"],
         (datetime.date.today() - relativedelta(years=3)).year,
         datetime.date.today().year,
     )
@@ -104,14 +103,14 @@ if __name__ == '__main__':
     )
 
     # gather Census ACS data
-    county_data = acsData(5, 2019, 'DP03_0088E', '050', ['012', '015', '027'], ['04'], 'profile').df.transpose()
+    county_data = acsData(5, 2019, 'DP03_0088E', '050', ['012', '027'], ['04'], 'profile').df.transpose()
     state_data = acsData(5, 2019, 'DP03_0088E', '040', ['04'], table_type='profile').df.transpose()
     national_data = acsData(5, 2019, 'DP03_0088E', '010', ['1'], table_type='profile').df.transpose()
     census_data = pd.concat([county_data, state_data, national_data], axis=1)
     census_data = census_data.rename(columns=lambda x: re.sub(',.*', '', x))
 
     #gather BEA data
-    bea_data = regionalData("CAINC1", 3, ["04015", "04027", "04012", "04000", "00000"], ["2019"]).df
+    bea_data = regionalData("CAINC1", 3, ["04027", "04012", "04000", "00000"], ["2019"]).df
     bea_data = bea_data.rename(columns=lambda x: re.sub(',.*', ' County', x))
     bea_data.iloc[0] = bea_data.replace(',','',regex=True)
 
@@ -123,13 +122,12 @@ if __name__ == '__main__':
     bls_graph.update_traces(mode='markers+lines', hovertemplate='%{y}%')
     bls_graph.update_layout(hovermode='x', dragmode=False, legend=dict(title={'text':""},yanchor="top", y=1.02, xanchor='left', x=1, font=dict(size=8)))
     bls_graph.write_html("./graphs/region_distress_unemployment.html", include_plotlyjs='cdn')
-    py.plot(bls_graph, filename='region_distress_unemployment', auto_open=False)
 
     #make a dataframe from the combined averages for all counties in the region
     combined_data = {
-        'Region' : [round(bls_unemployment_df[['La Paz County', 'Mohave County', 'Yuma County']].mean().mean(), 2),
-                    round(census_data.loc[:'DP03_0088E', 'Yuma County':'Mohave County'].mean().mean(), 2),
-                    round(bea_data[['La Paz County', 'Mohave County', 'Yuma County']].mean().mean(), 2)],
+        'Region' : [round(bls_unemployment_df[['La Paz County', 'Yuma County']].mean().mean(), 2),
+                    round(census_data.loc[:'DP03_0088E', 'Yuma County'].mean().mean(), 2),
+                    round(bea_data[['La Paz County', 'Yuma County']].mean().mean(), 2)],
         'Arizona' : [round(bls_unemployment_df['Arizona'].mean(), 2), census_data.loc['DP03_0088E']['Arizona'], bea_data['Arizona'][0]],
         'United States' : [round(bls_unemployment_df['United States'].mean(), 2),
                             census_data.loc['DP03_0088E']['United States'],
@@ -141,11 +139,10 @@ if __name__ == '__main__':
     combined_table = distress_table(combined_region_df)
     combined_table.update_layout(height=275, margin=dict(l=0,r=0,t=0,b=0))
     combined_table.write_html("./tables/region_combined_distress.html", include_plotlyjs='cdn')
-    py.plot(combined_table, filename="region_distress", auto_open=False)
 
 
     # make county-based tables
-    for region in ['La Paz County', 'Mohave County', 'Yuma County']:
+    for region in ['La Paz County', 'Yuma County']:
 
         # gather data
         county_data = {
@@ -163,4 +160,3 @@ if __name__ == '__main__':
         table = distress_table(county_df)
         table.update_layout(height=275, margin=dict(l=0,r=0,t=0,b=0))
         table.write_html(f"./tables/{'_'.join(region.lower().split()[:-1])}_distress.html", include_plotlyjs='cdn')
-        py.plot(table, filename=f"{'_'.join(region.lower().split()[:-1])}_distress", auto_open=False)

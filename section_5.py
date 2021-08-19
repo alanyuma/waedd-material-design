@@ -27,9 +27,9 @@ from pyCensus.acsData import acsData
 #constants
 locale.setlocale(locale.LC_ALL, '')
 area_dict = {
-    'Kingman city, Arizona' : 2133,
-    'Lake Havasu City city, Arizona' : 2396,
-    'Bullhead City city, Arizona' : 2591,
+    # 'Kingman city, Arizona' : 2133,
+    # 'Lake Havasu City city, Arizona' : 2396,
+    # 'Bullhead City city, Arizona' : 2591,
     'Yuma County, Arizona': 5519,
     'La Paz County, Arizona': 4514
 }
@@ -49,26 +49,26 @@ def comma_separated(number:int) -> str:
 #####
 
 #request Census Bureau data
-acs_econ_data = acsData(5, 2019, 'DP03', 160, ['39370', '08220', '37620'], ['04'], 'profile')
+# acs_econ_data = acsData(5, 2019, 'DP03', 160, ['39370', '08220', '37620'], ['04'], 'profile')
 county_econ_data = acsData(5, 2019, 'DP03', '050', ['027', '012'], ['04'], 'profile')
-population_data = acsData(5, 2019, 'DP05_0001E', 160, ['39370', '08220', '37620'], ['04'], 'profile')
+# population_data = acsData(5, 2019, 'DP05_0001E', 160, ['39370', '08220', '37620'], ['04'], 'profile')
 county_pop_data = acsData(5, 2019, 'DP05_0001E', '050', ['027', '012'], ['04'], 'profile')
 
 #request BLS Data
 bls_employment_data = BlsData(
-    ['LAUCT043937000000003','LAUCT043762000000003', 'LAUCT040822000000003', 'LAUCN040120000000003', 'LAUCN040270000000003', 'LASST040000000000003'],
+    ['LAUCN040120000000003', 'LAUCN040270000000003', 'LASST040000000000003'],
     datetime.datetime.today().date().year - 10,
     datetime.datetime.today().date().year
 )
 
 #create a cleaned df for each to work with. Also append county dataframes to regular city/town data for dataframes from census
-clean_acs_df = acs_econ_data.clean_df().append(county_econ_data.clean_df())
+clean_acs_df = county_econ_data.clean_df()
 clean_county_acs_df = county_econ_data.clean_df()
-clean_pop_df = population_data.clean_df().append(county_pop_data.clean_df())
+clean_pop_df = county_pop_data.clean_df()
 clean_bls_employment_df = bls_employment_data.clean_df()
 
 #add ACS survey year to context (mainly to show what year the data is pertenant to)
-context_dict['acs_year'] = acs_econ_data.year
+context_dict['acs_year'] = county_econ_data.year
 
 #####
 #### Employment and Unemployment ####

@@ -1,0 +1,21 @@
+Area codes for Mohave county areas:
+
+BLS:
+    distress:
+        - LAUCN040150000000003 -> unemployment percentage
+    section 5:
+        - LAUCT043937000000003 -> mohave unemployment
+        - LAUCT043762000000003 -> kingman city unemployment
+        - LAUCT040822000000003 -> Bullhead City unemployment
+        - 
+
+BEA:
+    - 04015
+
+Census:
+    Mohave County area code:
+        - 015
+    Places codes:
+        - 37620 -> kingman city
+        - 39370 -> Lake Havasu City
+        - 08220 -> Nullhead City
