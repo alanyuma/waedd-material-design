@@ -66,7 +66,69 @@ body {font-family: "Roboto", sans-serif}
       </header>
       <div class="w3-container" style="padding:32px">
           <h2>5.0 Workforce Development & Use</h2>
-         <h3 id="c52">5.1 Greater Yuma County (including La Paz County) Economic Region
+          <h3 id="c51">5.1 Mohave County</h3>
+          <p>
+            The Mohave County workforce is divided by the different cities and Mohave County, with each having different workforce skillsets and other unemployment and growth percentages.
+        </p>
+          <h3 id="c511">5.1.1 Kingman Economic Region</h3>
+        <p>
+            The Kingman Economic Region comprises eight zip codes that encompass 2,133 square miles, which contained about {{ context_dict['population']['Kingman city, Arizona'] | int | comma_separated }} people in {{ context_dict['acs_year'] }}. This region has the highest population density of the three geographies detailed in this report at {{ context_dict['pop_density:Kingman city, Arizona'] }} persons per square mile, who compose a total of {{ context_dict['total_households']['Kingman city, Arizona'] | int | comma_separated }} households, with a household size of {{ context_dict['avg_hh_size']['Kingman city, Arizona'] }}. The Kingman poverty rate is {{ context_dict['poverty_rate']['Kingman city, Arizona'] }}%.
+        </p>    
+        <p>
+            Approximately {{ context_dict['pct_hh_between_15_50']['Kingman city, Arizona'] }}% of these households earn between $15,000 to $50,000. Total employment in this economic region is {{ context_dict['employment']['Kingman city, Arizona'] | int | comma_separated }} persons, with an average income of ${{ context_dict['per_capita_income']['Kingman city, Arizona'] | int | comma_separated }}. The Kingman Economic Region's significant employers include Kingman Regional Medical Center, American Woodmark Corp., IWX Motor Freight, McKee Foods, Trueserve, Laron, Cantex, and Cascades Tissue.
+        </p>
+        <p>
+            This economic region contains the most diverse of the three and hosts significant manufacturing, transportation, logistics, aviation industries, and healthcare and tourism industries. The Kingman Economic Region must take advantage of its existing critical mass of sectors and continue developing its multimodal transportation options.
+        </p>
+        <p>
+            As ports on the west coast continue to experience more unloading delays, the freight hauling and logistics industries will be looking for alternatives further and further inland, since unloading delays cause massive monetary losses for these industries. Attracting sectors that focus on alternative energy component manufacturing (as opposed to generation) such as solar cells, is also worthy of attention.
+        </p>
+        <p>
+            The leading industries for employment in the Kingman Economic Region are {% for industry, percentage in context_dict['top-industries:Kingman city, Arizona'].items() %}{{ industry }}({{percentage}}%) {% endfor %}.
+        </p>
+        <p>
+            According to the BLS, the most recent unemployment rate for Kingman is {{ context_dict['current_unemployment:Kingman city'][1] }}% in {{ context_dict['current_unemployment:Kingman city'][0] }}. For the same month, the metro unemployment rate was {{ context_dict['current_unemployment_vs_AZ:Kingman city'][0] }}% {{ context_dict['current_unemployment_vs_AZ:Kingman city'][1] }} than the Arizona rate. The unemployment rate in Kingman peaked in {{ context_dict['max_unemployment:Kingman city'][0] }} at {{ context_dict['max_unemployment:Kingman city'][1] }}% and is now {{ context_dict['current_unemployment_vs_peak:Kingman city'][0] }}% {{ context_dict['current_unemployment_vs_peak:Kingman city'][1] }}.
+        </p>
+        <h6><a href="ceds.html">Return to CEDS</a></h6>
+        <hr>
+        <h3 id="c512">5.1.2 Lake Havasu Economic Region</h3>
+        <p>
+            The Lake Havasu City Economic Region comprises four zip codes that encompass 2,396 square miles, which contained {{ context_dict['population']['Lake Havasu City city, Arizona'] | int | comma_separated }} people in {{ context_dict['acs_year'] }}. This region hosts {{ context_dict['pop_density:Lake Havasu City city, Arizona'] }} persons per square mile, comprises {{ context_dict['total_households']['Lake Havasu City city, Arizona'] | int | comma_separated }} households, with a household size of {{ context_dict['avg_hh_size']['Lake Havasu City city, Arizona'] }}. Approximately {{ context_dict['pct_hh_between_15_50']['Lake Havasu City city, Arizona'] }}% of these households earn between $15,000 to $50,000. In Lake Havasu City, {{ context_dict['poverty_rate']['Lake Havasu City city, Arizona'] }}% of people live in poverty.
+        </p>
+        <p>
+            Total employment in this economic region is {{ context_dict['employment']['Lake Havasu City city, Arizona'] | int | comma_separated }} persons, with an average income of ${{ context_dict['per_capita_income']['Lake Havasu City city, Arizona'] | int | comma_separated }}. The major employers in the Lake Havasu City Economic Region include London Bridge Resort, Havasu Samaritan Regional Hospital, Mohave Community College, Sterilite Corporation, and Wal‐Mart. This economic region contains several cluster families and is more diversified than its neighbor to the north, Bullhead City. 
+        </p>
+        <p>
+            ASU@Lake Havasu City is a small, low-cost extension of the Arizona State University system offering high-demand, undergraduate degrees. The campus opened in Lake Havasu City, Arizona, in the Fall of 2012 and focuses on an experiential, student-centered approach to learning, including information technology and healthcare.
+        </p>
+        <p>
+            The Lake Havasu Economic Region must build on its unique assets in the region as a hub for motorsports and information technology industries and nurture its well-established tourism industries. 
+        </p>
+        <p>
+            The top three clusters in Lake Havasu City Economic Region include {% for industry in context_dict['top-industries:Lake Havasu City city, Arizona'] %}{{ industry }}, {% endfor %} which contain {% for industry in context_dict['top-industries:Lake Havasu City city, Arizona'] %}{{ context_dict['top-industries:Lake Havasu City city, Arizona']['industry'] }} percent, {% endfor %} of total employment.
+        </p>
+        <p>
+            According to the BLS, the most recent unemployment rate for Lake Havasu City (LHC) is {{ context_dict['current_unemployment:Lake Havasu City city'][1] }}% in {{ context_dict['current_unemployment:Lake Havasu City city'][0] }}. For the same month, the metro LHC unemployment rate was {{ context_dict['current_unemployment_vs_AZ:Lake Havasu City city'][0] }}% {{ context_dict['current_unemployment_vs_AZ:Lake Havasu City city'][1] }} than the Arizona rate. The unemployment rate in Lake Havasu City peaked in {{ context_dict['max_unemployment:Lake Havasu City city'][0] }} at {{ context_dict['max_unemployment:Lake Havasu City city'][1] }}% and is now {{ context_dict['current_unemployment_vs_peak:Lake Havasu City city'][0] }}% {{ context_dict['current_unemployment_vs_peak:Lake Havasu City city'][1] }}.
+        </p>
+        <h6><a href="ceds.html">Return to CEDS</a></h6>
+        <hr>
+        <h3 id="c513">5.1.3 Bullhead City Economic Region</h3>
+        <p>
+            The Bullhead City Economic Region comprises twelve zip codes from Mohave County, Arizona, Clark County, Nevada, and San Bernardino County, California. This region encompasses 2,591 square miles and contains {{ context_dict['population']['Kingman city, Arizona'] | int | comma_separated }} people in {{ context_dict['acs_year'] }}. These statistics translate to {{ context_dict['pop_density:Bullhead City city, Arizona'] }} persons per square mile, who compose a total of {{ context_dict['total_households']['Bullhead City city, Arizona'] | int | comma_separated }} households, with a household size of {{ context_dict['avg_hh_size']['Bullhead City city, Arizona'] }}.
+        </p>
+        <p>
+            Approximately 58 percent of these households earn between $15,000 to $50,000. Total employment in this economic region is {{ 
+              ['Bullhead City city, Arizona'] | int | comma_separated }} persons, with an average income of ${{ context_dict['per_capita_income']['Bullhead City city, Arizona'] | int | comma_separated }}, and a poverty rate of {{ context_dict['poverty_rate']['Bullhead City city, Arizona'] }}%. The major employers in the Bullhead City Economic Region include Western Arizona Regional Medical Center, Silver Ridge Village, DOT Foods, and Mohave Community College.
+        </p>
+        <p>
+            This economic region is primarily reliant on the tourism industry, specifically the entertainment and gaming industries located in Laughlin, Nevada. Proximity to Lake Mohave and Lake Havasu provides a significant recreational sector, while the regional medical center is the core of this region's healthcare industry. The Bullhead City Economic Region needs diversification and should seek to support its neighbors' more diverse economies. Industry clusters that are mature in this region include Arts and Entertainment, and Healthcare. 
+        </p>
+        <p>
+            According to the BLS, the most recent unemployment rate for Bullhead City is {{ context_dict['current_unemployment:Bullhead City city'][1] }}% in {{ context_dict['current_unemployment:Bullhead City city'][0] }}. For the same month, the metro Bullhead City unemployment rate was {{ context_dict['current_unemployment_vs_AZ:Bullhead City city'][0] }}% {{ context_dict['current_unemployment_vs_AZ:Bullhead City city'][1] }} than the Arizona rate. The unemployment rate in Bullhead City peaked in {{ context_dict['max_unemployment:Bullhead City city'][0] }} at {{ context_dict['max_unemployment:Bullhead City city'][1] }}% and is now {{ context_dict['current_unemployment_vs_peak:Bullhead City city'][0] }}% {{ context_dict['current_unemployment_vs_peak:Bullhead City city'][1] }}.
+        </p>
+         <h6><a href="ceds.html">Return to CEDS</a></h6>
+         <hr>
+         <h3 id="c52">5.2 Greater Yuma County (including La Paz County) Economic Region
         </h3>
         <p>
             High unemployment remains an issue in Yuma. Citing August 2019 data, the Bureau of Labor Statistics ranked Yuma as #1 among the 13 U.S. cities that post unemployment rates above 15 percent. Yuma's agricultural workforce, which adjusts to the picking season, is cited as the reason for the high unemployment by the Arizona Department of Commerce. Yuma County is 5,519 sqaure miles in area and has a population of {{ context_dict['population']['Yuma County, Arizona'] | int | comma_separated }} people, and a population density of {{ context_dict['pop_density:Yuma County, Arizona'] }} people per sqaure mile. Yuma county has a total of {{ context_dict['total_households']['Yuma County, Arizona'] | int | comma_separated }} households, with an average household size of {{ context_dict['avg_hh_size']['Yuma County, Arizona'] }}.

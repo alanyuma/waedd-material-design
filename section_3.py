@@ -9,15 +9,14 @@ usage:
     - python section_3.py
 """
 import yaml
-import chart_studio.plotly as py
 from pybls.bls_data import BlsData
 from population_data import current_populations, population_predictions
 
 #####
 ## Population Data ##
 #####
-# current_populations()
-# population_predictions()
+current_populations()
+population_predictions()
 
 #####
 ## Bureau of Labor Statistics data ##
@@ -64,7 +63,5 @@ for waedd_section in bls_list:
     table.update_layout(height=275, margin=dict(l=0,r=0,t=0,b=0))
 
     #save graph and table to html files
-    # fig.write_html(f"./graphs/{waedd_section['filename']}.html", include_plotlyjs='cdn')
-    # table.write_html(f"./tables/{waedd_section['filename']}.html", include_plotlyjs='cdn')
-    py.plot(fig, filename=f"{waedd_section['filename']}_graph", auto_open=False)
-    py.plot(table, filename=f"{waedd_section['filename']}_table", auto_open=False)
+    fig.write_html(f"./graphs/{waedd_section['filename']}.html", include_plotlyjs='cdn')
+    table.write_html(f"./tables/{waedd_section['filename']}.html", include_plotlyjs='cdn')
