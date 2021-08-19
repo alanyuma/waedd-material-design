@@ -2,13 +2,12 @@
 Written By: Aaron Finocchiaro
 3/2021
 
-Functions to aggregate all population data for Yuma, La Paz, and Mohave Counties from azcommerce.com
+Functions to aggregate all population data for Yuma and La Paz Counties from azcommerce.com
 for use with the WAEDD website.
 """
 import os
 import re
 import urllib.request
-import chart_studio.plotly as py
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -71,7 +70,7 @@ def current_populations():
     pop_df = pop_df.drop(pop_df.columns[42], axis=1)
 
     #graph data
-    graphing_df = pop_df.loc[['Yuma Total', 'La Paz Total', 'Mohave Total'], [2020]]
+    graphing_df = pop_df.loc[['Yuma Total', 'La Paz Total'], [2020]]
     graphing_df = graphing_df.rename(index=lambda x: re.split(r'\*|\s(?=Total)', x)[0])
     graphing_df = graphing_df.sort_values(by=[2020], ascending=False)
     fig = px.pie(graphing_df, values=2020, names=graphing_df.index)
@@ -95,8 +94,6 @@ def current_populations():
 
     fig.write_html("./graphs/current_population_pie.html", include_plotlyjs='cdn')
     table.write_html("./tables/current_population.html", include_plotlyjs='cdn')
-    py.plot(fig, filename='current_population_pie', auto_open=False)
-    py.plot(table, filename='current_population', auto_open=False)
 
 def population_predictions():
     """
@@ -111,7 +108,7 @@ def population_predictions():
     """
     excel_file = POP_PREDICTION_EXCEL_URL.split('/')[-1]
     ignore_excel_lines = [0,1,41,42,43,44]
-    regions = ['Arizona', 'Yuma County',  'Mohave County', 'La Paz County']
+    regions = ['Arizona', 'Yuma County', 'La Paz County']
 
     #download file if it doesn't exist in the waedd data dir
     if not os.path.exists(f"{WAEDD_DATA_DIR}/{excel_file}"):
@@ -131,7 +128,6 @@ def population_predictions():
         fig.update_traces(mode='markers+lines', hovertemplate='Pop=%{y}')
         fig.update_layout(hovermode='x')
         fig.write_html(f"./graphs/{region.lower().replace(' ','_')}_pop_predictions.html", include_plotlyjs='cdn')
-        py.plot(fig, filename=f"{region.lower().replace(' ','_')}_pop_predictions", auto_open=False)
 
     #data is indexed by date, so data needs to be organized by column in a list
     col_vals = [population_df[col].to_list() for col in population_df[regions]]
@@ -154,8 +150,3 @@ def population_predictions():
     )])
     table.update_layout(height=275, margin=dict(l=0,r=0,t=0,b=0))
     table.write_html("./tables/population_predictions.html", include_plotlyjs='cdn')
-    py.plot(table, filename="population_predictions", auto_open=False)
-
-if __name__ == '__main__':
-    current_populations()
-    population_predictions()
