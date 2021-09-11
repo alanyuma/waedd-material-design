@@ -9,198 +9,343 @@
 
 <url>
   <loc>https://www.waedd.org/</loc>
-  <lastmod>2020-10-25T23:14:26+00:00</lastmod>
+  <lastmod>2021-07-07T18:18:50+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/index.html</loc>
-  <lastmod>2020-10-25T23:14:26+00:00</lastmod>
+  <lastmod>2021-07-07T18:18:50+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/about.html</loc>
-  <lastmod>2020-10-25T22:22:28+00:00</lastmod>
+  <lastmod>2021-05-30T20:11:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/board.html</loc>
-  <lastmod>2020-10-25T22:22:27+00:00</lastmod>
+  <lastmod>2021-05-30T20:19:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/ceds.html</loc>
-  <lastmod>2020-10-25T22:22:29+00:00</lastmod>
+  <lastmod>2021-07-30T15:50:56+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/contact.html</loc>
-  <lastmod>2020-10-25T22:22:26+00:00</lastmod>
+  <lastmod>2021-05-27T17:44:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/distress.html</loc>
-  <lastmod>2020-10-25T22:22:27+00:00</lastmod>
+  <lastmod>2021-07-23T16:37:09+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/files.html</loc>
-  <lastmod>2020-10-25T22:22:26+00:00</lastmod>
+  <lastmod>2021-05-27T22:45:08+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/meetings.html</loc>
-  <lastmod>2020-10-25T22:22:27+00:00</lastmod>
+  <lastmod>2021-05-31T17:16:03+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/partners.html</loc>
-  <lastmod>2020-10-25T22:22:26+00:00</lastmod>
+  <lastmod>2021-06-12T14:54:17+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/projects.html</loc>
-  <lastmod>2020-10-25T22:22:25+00:00</lastmod>
+  <lastmod>2021-07-30T00:10:44+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/sitemap.html</loc>
-  <lastmod>2020-10-25T22:22:28+00:00</lastmod>
+  <lastmod>2021-05-29T17:04:39+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/twitter.html</loc>
-  <lastmod>2020-10-25T22:22:28+00:00</lastmod>
+  <lastmod>2021-05-29T17:25:30+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://www.waedd.org/survey.html</loc>
+  <lastmod>2021-05-15T17:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/strategy.html</loc>
+  <lastmod>2021-05-15T20:44:09+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/invest.html</loc>
+  <lastmod>2021-05-17T22:55:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://www.waedd.org/summary-background.html</loc>
-  <lastmod>2020-10-25T22:22:27+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/district-maps.html</loc>
-  <lastmod>2020-10-25T22:56:07+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/socio-economic-data.html</loc>
-  <lastmod>2020-10-25T23:10:17+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/economic-clusters.html</loc>
-  <lastmod>2020-10-25T22:22:27+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/workforce-development.html</loc>
-  <lastmod>2020-10-25T22:22:28+00:00</lastmod>
+  <lastmod>2021-07-30T00:03:50+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/swot-analysis.html</loc>
-  <lastmod>2020-10-25T22:22:28+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/regional-analysis.html</loc>
-  <lastmod>2020-10-25T22:22:27+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/economic-growth.html</loc>
-  <lastmod>2020-10-25T22:22:27+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/bullhead-city-az.html</loc>
-  <lastmod>2020-10-25T22:22:23+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/kingman-az.html</loc>
-  <lastmod>2020-10-25T22:22:25+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/san-luis-az.html</loc>
-  <lastmod>2020-10-25T22:22:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/somerton-az.html</loc>
-  <lastmod>2020-10-25T22:22:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/yuma-az.html</loc>
-  <lastmod>2020-10-25T22:22:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/la-paz-county-az.html</loc>
-  <lastmod>2020-10-25T22:22:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/lake-havasu-city-az.html</loc>
-  <lastmod>2020-10-25T22:22:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/mohave-county-az.html</loc>
-  <lastmod>2020-10-20T23:49:18+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/colorado-city-az.html</loc>
-  <lastmod>2020-10-25T22:22:24+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/parker-az.html</loc>
-  <lastmod>2020-10-25T22:22:23+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/quartzsite-az.html</loc>
-  <lastmod>2020-10-25T22:22:23+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/wellton-az.html</loc>
-  <lastmod>2020-10-25T22:22:23+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/yuma-county-az.html</loc>
-  <lastmod>2020-10-25T22:22:25+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/economic-resilience.html</loc>
-  <lastmod>2020-10-25T22:22:26+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/climate-change-impacts.html</loc>
-  <lastmod>2020-10-25T22:22:26+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.waedd.org/opportunity-zones.html</loc>
-  <lastmod>2020-10-25T22:22:26+00:00</lastmod>
+  <lastmod>2021-07-30T20:37:22+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/strategic-direction.html</loc>
-  <lastmod>2020-10-25T22:22:25+00:00</lastmod>
+  <lastmod>2021-07-30T20:41:58+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.waedd.org/evaluation-framework.html</loc>
-  <lastmod>2020-10-25T22:22:25+00:00</lastmod>
+  <lastmod>2021-07-30T00:47:39+00:00</lastmod>
   <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/economic-resilience.html</loc>
+  <lastmod>2021-07-30T20:42:56+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/climate-change-impacts.html</loc>
+  <lastmod>2021-07-30T00:07:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/community.html</loc>
+  <lastmod>2021-07-29T23:56:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/maps.html</loc>
+  <lastmod>2021-07-30T19:44:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/opportunity-zones.html</loc>
+  <lastmod>2021-07-30T00:15:24+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/socio-economic-data.html</loc>
+  <lastmod>2021-07-30T00:19:07+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/region_distress_unemployment.html</loc>
+  <lastmod>2021-07-03T17:57:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/region_combined_distress.html</loc>
+  <lastmod>2021-07-23T16:25:41+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/la_paz_distress.html</loc>
+  <lastmod>2021-07-23T16:25:09+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/mohave_distress.html</loc>
+  <lastmod>2021-07-23T16:25:18+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/yuma_distress.html</loc>
+  <lastmod>2021-07-23T16:25:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/ypg-yuma.html</loc>
+  <lastmod>2021-07-29T23:57:17+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/mcas-yuma.html</loc>
+  <lastmod>2021-07-29T23:57:06+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/bullhead-city-az.html</loc>
+  <lastmod>2021-06-09T23:49:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/kingman-az.html</loc>
+  <lastmod>2021-06-10T00:31:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/san-luis-az.html</loc>
+  <lastmod>2021-06-10T00:56:03+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/somerton-az.html</loc>
+  <lastmod>2021-06-10T00:58:46+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/yuma-az.html</loc>
+  <lastmod>2021-06-10T01:04:09+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/la-paz-county-az.html</loc>
+  <lastmod>2021-06-10T00:23:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/lake-havasu-city-az.html</loc>
+  <lastmod>2021-06-10T00:33:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/mohave-county-az.html</loc>
+  <lastmod>2021-06-10T00:44:53+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/colorado-city-az.html</loc>
+  <lastmod>2021-06-09T23:57:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/parker-az.html</loc>
+  <lastmod>2021-06-10T00:50:12+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/quartzsite-az.html</loc>
+  <lastmod>2021-06-10T00:53:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/wellton-az.html</loc>
+  <lastmod>2021-06-10T01:01:40+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/yuma-county-az.html</loc>
+  <lastmod>2021-06-10T01:07:26+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/current_population_pie.html</loc>
+  <lastmod>2021-07-03T17:57:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/current_population.html</loc>
+  <lastmod>2021-07-23T16:25:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/Arizona_pop_predictions.html</loc>
+  <lastmod>2021-07-03T17:55:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/la_paz_county_pop_predictions.html</loc>
+  <lastmod>2021-07-03T17:57:10+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/mohave_county_pop_predictions.html</loc>
+  <lastmod>2021-07-03T17:57:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/yuma_county_pop_predictions.html</loc>
+  <lastmod>2021-07-03T17:57:54+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/population_predictions.html</loc>
+  <lastmod>2021-07-23T16:25:29+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/mean_weekly_wage.html</loc>
+  <lastmod>2021-07-23T16:12:44+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/ceds3_3_avg_weekly_wages.html</loc>
+  <lastmod>2021-07-23T16:11:14+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/ceds3_3_avg_weekly_wages.html</loc>
+  <lastmod>2021-07-23T16:24:22+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/ceds3_4_unemployment_rate.html</loc>
+  <lastmod>2021-07-23T16:11:50+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/ceds3_4_unemployment_rate.html</loc>
+  <lastmod>2021-07-23T16:24:43+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/ceds3_4_la_paz_employment.html</loc>
+  <lastmod>2021-07-23T16:11:18+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/ceds3_4_la_paz_employment.html</loc>
+  <lastmod>2021-07-23T16:24:26+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/ceds3_4_mohave_employment.html</loc>
+  <lastmod>2021-07-23T16:11:41+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/ceds3_4_mohave_employment.html</loc>
+  <lastmod>2021-07-23T16:24:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/ceds3_4_yuma_employment.html</loc>
+  <lastmod>2021-07-23T16:11:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/ceds3_4_yuma_employment.html</loc>
+  <lastmod>2021-07-23T16:24:49+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/ceds3_4_lake_havasu_kingman_employment.html</loc>
+  <lastmod>2021-07-23T16:11:34+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/ceds3_4_lake_havasu_kingman_employment.html</loc>
+  <lastmod>2021-07-23T16:24:30+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/graphs/ceds3_4_yuma_msa_employment.html</loc>
+  <lastmod>2021-07-23T16:12:05+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.waedd.org/tables/ceds3_4_yuma_msa_employment.html</loc>
+  <lastmod>2021-07-23T16:24:57+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 
 
