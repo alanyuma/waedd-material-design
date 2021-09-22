@@ -30,7 +30,8 @@ Once complete, open VSCode to the directory that you have stored this cloned rep
 
 ### Setup API authorization
 
-**API KEYS ARE REQUIRED TO USE THIS.** There is more on this in the pybls module docs. However, the easiest way to do this is to go to the [BLS Website](https://www.bls.gov/developers/home.htm) and select `registration`. Here you can signup for an API key which will allow you to make more API calls. This API key **must** be set as an environment variable. The key will be emailed to you, once you receive it, set the environment variable in your terminal as follows:
+**API KEYS ARE REQUIRED TO USE THIS.** These are mainly for the bls-data and the bea-data packages to work correctly. Follow the instructions below or go to the README for each package to get more information.
+- **BLS** = Go to the [BLS Website](https://www.bls.gov/developers/home.htm) and select `registration`. Here you can signup for an API key which will allow you to make more API calls. This API key **must** be set as an environment variable. The key will be emailed to you, once you receive it, set the environment variable in your terminal as follows:
 
 Windows:
 ```psh
@@ -40,6 +41,18 @@ $Env:BLS_API_KEY='{YOUR_API_KEY}'
 Mac/Linux:
 ```sh
 export BLS_API_KEY='{YOUR_API_KEY}'
+```
+
+- **BEA** = Go to the [BEA Website](https://apps.bea.gov/api/signup/index.cfm) and register for a key. It will be emailed to you, add it to your environment:
+
+Windows:
+```psh
+$Env:BEA_API_KEY='{YOUR_API_KEY}'
+```
+
+Mac/Linux:
+```sh
+export BEA_API_KEY='{YOUR_API_KEY}'
 ```
 
 ### Python Startup
@@ -62,6 +75,7 @@ NOTE: At this step, there may some issues with versions not working correctly. I
 ```sh
 python section_3.py  #Runs the script for all section 3 graphs and tables  
 python section_5.py  #Runs script to get updated data for section 5
+python distress.py   #Runs script for the distress page
 ```
 
 ### HTML Setup
@@ -143,7 +157,7 @@ ignore_excel_lines = [100,101,102]
 
 Section 3 is driven by the following 2 files:
 
-- `section_3.py` - Handles all interaction with Bureau of Labor statistics and pybls package (Read pybls docs for more info on this). Also handles running the functions in `population_data.py` so this one script will update all of section 3. Run this to update section 3.
+- `section_3.py` - Handles all interaction with Bureau of Labor statistics and bls-data package (Read bls-data docs for more info on this). Also handles running the functions in `population_data.py` so this one script will update all of section 3. Run this to update section 3.
 - `population_data.py` - Handles all data from AZ Commerce relating to Arizona population data. There are 2 spreadsheets that are responsible for providing this data that need to be manually downloaded and updated in this repository when AZ Commerce updates them.
 
 All graphs produced by the above functions and scripts will output graph files to `graphs/` and table files to `tables/`.
@@ -160,7 +174,7 @@ the data that needs to be passed to the Jinja template.
 
 ### Adding new data sources
 
-Adding a new data source for section 5 can be done any way that the user needs to. Everything is all driven by Pandas dataframes currently, so the easiest way either modify the current `acsData` or `pyBls` objects being created, or to add new ones. Or if the user needs to, they can add a new data source that the script can interact with.
+Adding a new data source for section 5 can be done any way that the user needs to. Everything is all driven by Pandas dataframes currently, so the easiest way either modify the current `acsData` or `bls-data` objects being created, or to add new ones. Or if the user needs to, they can add a new data source that the script can interact with.
 
 ### Adding new data points
 
@@ -170,7 +184,7 @@ A user can either use new data points from data that is already being retrieved 
 
 If this script is breaking, it's probably due to one of the following issues:
 
-- A data point was added incorrectly and the acsData class or pyBls data class is trying to do some operation on an object of `NoneType`. If this is the case, use POSTMAN or some other tool to interact with their APIs and verify the request is being made correctly.
+- A data point was added incorrectly and the acsData class or bls-data data class is trying to do some operation on an object of `NoneType`. If this is the case, use POSTMAN or some other tool to interact with their APIs and verify the request is being made correctly.
 
 - The BLS or Census Bureau data has changed. Sometimes these data tables change, the regions change, or something else could change on their end. Again, use POSTMAN to verify what is being returned or use their websites to verify that changes have been made and what has changed. This could impact how data needs to be displayed.
 
