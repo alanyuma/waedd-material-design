@@ -21,8 +21,8 @@ import datetime
 import locale
 import pandas as pd
 from jinja2 import FileSystemLoader, Environment
-from pybls.bls_data import BlsData
-from pyCensus.acsData import acsData
+from bls_data.bls import BlsData
+from pyCensus.censusdata import censusData
 
 #constants
 locale.setlocale(locale.LC_ALL, '')
@@ -49,10 +49,24 @@ def comma_separated(number:int) -> str:
 #####
 
 #request Census Bureau data
-# acs_econ_data = acsData(5, 2019, 'DP03', 160, ['39370', '08220', '37620'], ['04'], 'profile')
-county_econ_data = acsData(5, 2019, 'DP03', '050', ['027', '012'], ['04'], 'profile')
-# population_data = acsData(5, 2019, 'DP05_0001E', 160, ['39370', '08220', '37620'], ['04'], 'profile')
-county_pop_data = acsData(5, 2019, 'DP05_0001E', '050', ['027', '012'], ['04'], 'profile')
+county_econ_data = censusData(
+    ['acs','acs5','profile'],
+    2019,
+    {
+        'get': "group(DP03)",
+        'in' : "state:04",
+        'for': "county:027,012",
+    }
+)
+county_pop_data = censusData(
+    ['acs','acs5','profile'],
+    2019,
+    {
+        'get': "NAME,DP05_0001E",
+        'in' : "state:04",
+        'for': "county:027,012",
+    }
+)
 
 #request BLS Data
 bls_employment_data = BlsData(
@@ -63,8 +77,10 @@ bls_employment_data = BlsData(
 
 #create a cleaned df for each to work with. Also append county dataframes to regular city/town data for dataframes from census
 clean_acs_df = county_econ_data.clean_df()
+clean_acs_df = clean_acs_df.set_index("NAME")
 clean_county_acs_df = county_econ_data.clean_df()
 clean_pop_df = county_pop_data.clean_df()
+clean_pop_df = clean_pop_df.set_index("NAME")
 clean_bls_employment_df = bls_employment_data.clean_df()
 
 #add ACS survey year to context (mainly to show what year the data is pertenant to)

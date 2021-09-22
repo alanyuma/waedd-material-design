@@ -19,3 +19,8 @@ Census:
         - 37620 -> kingman city
         - 39370 -> Lake Havasu City
         - 08220 -> Nullhead City
+
+Old ACS data for section 5: (migrate this to censusData objects if using again)
+# acs_econ_data = acsData(5, 2019, 'DP03', 160, ['39370', '08220', '37620'], ['04'], 'profile')
+# population_data = acsData(5, 2019, 'DP05_0001E', 160, ['39370', '08220', '37620'], ['04'], 'profile')
+
