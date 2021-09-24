@@ -9,7 +9,7 @@ usage:
     - python section_3.py
 """
 import yaml
-from pybls.bls_data import BlsData
+from bls_data.bls import BlsData
 from population_data import current_populations, population_predictions
 
 #####

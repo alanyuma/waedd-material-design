@@ -8,9 +8,9 @@ import re
 import pandas as pd
 import plotly.graph_objects as go
 from dateutil.relativedelta import relativedelta
-from pyBea.bea_data import regionalData
-from pybls.bls_data import BlsData
-from pyCensus.acsData import acsData
+from bea_data.bea_data import getData
+from bls_data.bls import BlsData
+from pyCensus.censusdata import censusData
 
 def distress_table_fill_colors(df:pd.DataFrame) -> list:
     """
@@ -103,14 +103,50 @@ if __name__ == '__main__':
     )
 
     # gather Census ACS data
-    county_data = acsData(5, 2019, 'DP03_0088E', '050', ['012', '027'], ['04'], 'profile').df.transpose()
-    state_data = acsData(5, 2019, 'DP03_0088E', '040', ['04'], table_type='profile').df.transpose()
-    national_data = acsData(5, 2019, 'DP03_0088E', '010', ['1'], table_type='profile').df.transpose()
+    county_data = censusData(
+        ['acs','acs5','profile'],
+        2019,
+        {
+            'get': "NAME,DP03_0088E",
+            'in' : "state:04",
+            'for': "county:012,027",
+        }
+    ).df
+    county_data = county_data.set_index("NAME").transpose()
+
+    state_data = censusData(
+        ['acs','acs5','profile'],
+        2019,
+        {
+            'get': "NAME,DP03_0088E",
+            'for': "state:04",
+        }
+    ).df
+    state_data = state_data.set_index("NAME").transpose()
+
+    national_data = censusData(
+        ['acs','acs5','profile'],
+        2019,
+        {
+            'get': "NAME,DP03_0088E",
+            'for': "us:1",
+        }
+    ).df
+    national_data = national_data.set_index("NAME").transpose()
+
+    # merge census data into single dataframe
     census_data = pd.concat([county_data, state_data, national_data], axis=1)
     census_data = census_data.rename(columns=lambda x: re.sub(',.*', '', x))
 
     #gather BEA data
-    bea_data = regionalData("CAINC1", 3, ["04027", "04012", "04000", "00000"], ["2019"]).df
+    bea_data = getData(
+        datasetname="Regional",
+        TableName="CAINC1",
+        method='getdata',
+        LineCode=3,
+        GeoFIPS="04027,04012,04000,00000",
+        Year=2019
+    ).clean_df('TimePeriod','GeoName','DataValue')
     bea_data = bea_data.rename(columns=lambda x: re.sub(',.*', ' County', x))
     bea_data.iloc[0] = bea_data.replace(',','',regex=True)
 
@@ -120,7 +156,9 @@ if __name__ == '__main__':
                                    graph_labels={"date":"Date", "value": "Percent Unemployed"},
                                    custom_column_names={"LNU04000000": "United States"})
     bls_graph.update_traces(mode='markers+lines', hovertemplate='%{y}%')
-    bls_graph.update_layout(hovermode='x', dragmode=False, legend=dict(title={'text':""},yanchor="top", y=1.02, xanchor='left', x=1, font=dict(size=8)))
+    bls_graph.update_layout(hovermode='x',
+                            dragmode=False,
+                            legend=dict(title={'text':""},yanchor="top", y=1.02, xanchor='left', x=1, font=dict(size=8)))
     bls_graph.write_html("./graphs/region_distress_unemployment.html", include_plotlyjs='cdn')
 
     #make a dataframe from the combined averages for all counties in the region
